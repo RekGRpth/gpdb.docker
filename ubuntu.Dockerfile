@@ -1,15 +1,13 @@
-FROM ubuntu:focal
+FROM ubuntu
 ADD bin /usr/local/bin
 ENTRYPOINT [ "docker_entrypoint.sh" ]
 ENV GROUP=gpdb \
     HOME=/home \
     USER=gpdb
 MAINTAINER RekGRpth
-#STOPSIGNAL SIGINT
 WORKDIR "$HOME"
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
-#    ln -fs python3 /usr/bin/python; \
     chmod +x /usr/local/bin/*.sh; \
     addgroup --system --gid 1000 "$GROUP"; \
     adduser --system --uid 1000 --home "$HOME" --shell /bin/bash --ingroup "$GROUP" "$USER"; \
@@ -41,9 +39,7 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
         ca-certificates \
         gosu \
-#        iputils-ping \
         locales \
-#        openssh-client \
         ssh \
         tzdata \
     ; \
