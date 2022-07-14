@@ -49,7 +49,6 @@ RUN set -eux; \
     locale-gen --lang ru_RU.UTF-8; \
     dpkg-reconfigure locales; \
     rm -rf /var/lib/apt/lists/* /var/cache/ldconfig/aux-cache /var/cache/ldconfig; \
-    rm -rf "$HOME" /usr/share/doc /usr/share/man /usr/local/share/doc /usr/local/share/man; \
     find /usr -type f -name "*.la" -delete; \
     mkdir -p "$HOME"; \
     chown -R "$USER":"$GROUP" "$HOME"; \
