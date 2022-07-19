@@ -53,4 +53,6 @@ RUN set -eux; \
     mkdir -p "$HOME"; \
     chown -R "$USER":"$GROUP" "$HOME"; \
     mkdir -p /docker-entrypoint-initdb.d; \
+    echo '"\e[A": history-search-backward' >>/etc/inputrc; \
+    echo '"\e[B": history-search-forward' >>/etc/inputrc; \
     echo done

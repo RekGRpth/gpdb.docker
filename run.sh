@@ -13,6 +13,8 @@ docker run \
     --env TZ=Asia/Yekaterinburg \
     --env USER_ID="$(id -u)" \
     --hostname gpdb \
+    --memory=8g \
+    --memory-swap=8g \
     --mount type=bind,source=/etc/certs,destination=/etc/certs,readonly \
     --mount type=volume,source=gpdb,destination=/home \
     --name gpdb \
