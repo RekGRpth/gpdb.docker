@@ -16,8 +16,10 @@ docker run \
     --memory=8g \
     --memory-swap=8g \
     --mount type=bind,source=/etc/certs,destination=/etc/certs,readonly \
+    --mount type=bind,source=/sys,destination=/sys,readonly \
     --mount type=volume,source=gpdb,destination=/home \
     --name gpdb \
     --network name=docker,alias=gpdb."$(hostname -d)" \
+    --privileged \
     --restart always \
     "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-ubuntu}" /usr/sbin/sshd -De
