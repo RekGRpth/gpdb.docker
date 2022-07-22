@@ -14,6 +14,7 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends apt-utils software-properties-common; \
     add-apt-repository -y universe; \
+    echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-proposed restricted main multiverse universe" >>/etc/apt/sources.list.d/proposed-repositories.list; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
         curl \
