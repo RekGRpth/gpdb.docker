@@ -17,8 +17,55 @@ RUN set -eux; \
     echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-proposed restricted main multiverse universe" >>/etc/apt/sources.list.d/proposed-repositories.list; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
+        bison \
+        bpfcc-tools \
+        build-essential \
+        ccache \
+        cmake \
         curl \
+        curl \
+        default-jdk \
+        flex \
+        g++ \
+        gcc \
+        gcc-bpf \
+        gdb \
+        gdb-bpf \
+        git-core \
+        golang \
+        htop \
+        inetutils-ping \
+        iproute2 \
+        krb5-admin-server \
+        krb5-kdc \
+        less \
+        libapr1-dev \
+        libbz2-dev \
+        libcurl4-gnutls-dev \
+        libevent-dev \
+        libkrb5-dev \
+        libpam-dev \
+        libperl-dev \
+        libreadline-dev \
+        libssl-dev \
+        libxml2-dev \
+        libyaml-dev \
+        libzstd-dev \
+        linux-generic \
+        linux-headers-generic \
+        locales \
+        make \
+        net-tools \
+        ninja-build \
+        openssh-client \
+        openssh-server \
+        openssl \
         python2 \
+        python2-dev \
+        python3 \
+        python3-dev \
+        systemtap-sdt-dev \
+        zlib1g-dev \
     ; \
     curl "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -o get-pip.py; \
     python2 get-pip.py --no-python-version-warning --no-cache-dir --ignore-installed --prefix /usr/local; \
