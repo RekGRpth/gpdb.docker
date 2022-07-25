@@ -65,7 +65,6 @@ RUN set -eux; \
         python2-dev \
         python3 \
         python3-dev \
-        python3-dev \
         python3-pip \
         python3-psutil \
         python3-pygresql \
