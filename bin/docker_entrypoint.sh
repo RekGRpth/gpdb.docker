@@ -1,9 +1,9 @@
 #!/bin/sh -ex
 
-if [ "$GP_MAJOR" = '6' ]
+if [ "$GP_MAJOR" = '6' ]; then
     update-alternatives --install /usr/bin/python python /usr/bin/python2 2
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1
-elif [ "$GP_MAJOR" = '6' ]
+elif [ "$GP_MAJOR" = '6' ]; then
     update-alternatives --install /usr/bin/python python /usr/bin/python2 1
     update-alternatives --install /usr/bin/python python /usr/bin/python3 2
 fi
