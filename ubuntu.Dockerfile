@@ -22,8 +22,6 @@ RUN set -eux; \
     ; \
     curl "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -o get-pip.py; \
     python2 get-pip.py --no-python-version-warning --no-cache-dir --ignore-installed --prefix /usr/local; \
-    update-alternatives --install /usr/bin/python python /usr/bin/python2 2; \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3 1; \
     export savedAptMark="$(apt-mark showmanual)"; \
     apt-get update; \
     apt-get full-upgrade -y --no-install-recommends; \
