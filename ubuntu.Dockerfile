@@ -23,7 +23,6 @@ RUN set -eux; \
         ccache \
         cmake \
         curl \
-        curl \
         default-jdk \
         flex \
         g++ \
@@ -48,6 +47,7 @@ RUN set -eux; \
         libperl-dev \
         libreadline-dev \
         libssl-dev \
+        libxerces-c-dev \
         libxml2-dev \
         libyaml-dev \
         libzstd-dev \
@@ -60,10 +60,16 @@ RUN set -eux; \
         openssh-client \
         openssh-server \
         openssl \
+        pkg-config \
         python2 \
         python2-dev \
         python3 \
         python3-dev \
+        python3-dev \
+        python3-pip \
+        python3-psutil \
+        python3-pygresql \
+        python3-yaml \
         systemtap-sdt-dev \
         zlib1g-dev \
     ; \
