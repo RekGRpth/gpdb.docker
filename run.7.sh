@@ -3,8 +3,8 @@
 #docker pull "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-latest}"
 docker network create --attachable --opt com.docker.network.bridge.name=docker docker || echo $?
 docker volume create gpdb
-docker stop gpdb || echo $?
-docker rm gpdb || echo $?
+docker stop gpdb7 || echo $?
+docker rm gpdb7 || echo $?
 docker run \
     --detach \
     --env GP_MAJOR=7 \
@@ -12,14 +12,12 @@ docker run \
     --env LANG=ru_RU.UTF-8 \
     --env TZ=Asia/Yekaterinburg \
     --env USER_ID="$(id -u)" \
-    --hostname gpdb \
-    --memory=8g \
-    --memory-swap=8g \
+    --hostname gpdb7 \
     --mount type=bind,source=/etc/certs,destination=/etc/certs,readonly \
     --mount type=bind,source=/sys,destination=/sys,readonly \
     --mount type=volume,source=gpdb,destination=/home \
-    --name gpdb \
-    --network name=docker,alias=gpdb."$(hostname -d)" \
+    --name gpdb7 \
+    --network name=docker,alias=gpdb7."$(hostname -d)" \
     --privileged \
     --restart always \
     "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-ubuntu}" /usr/sbin/sshd -De

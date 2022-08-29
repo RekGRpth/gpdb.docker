@@ -47,7 +47,6 @@ RUN set -eux; \
         libperl-dev \
         libreadline-dev \
         libssl-dev \
-        libxerces-c-dev \
         libxml2-dev \
         libyaml-dev \
         libzstd-dev \
@@ -74,6 +73,9 @@ RUN set -eux; \
     ; \
     curl "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -o get-pip.py; \
     python2 get-pip.py --no-python-version-warning --no-cache-dir --ignore-installed --prefix /usr/local; \
+    pip2 install --no-python-version-warning --no-cache-dir --ignore-installed --prefix /usr/local \
+        psutil \
+    ; \
     export savedAptMark="$(apt-mark showmanual)"; \
     apt-get update; \
     apt-get full-upgrade -y --no-install-recommends; \
@@ -106,4 +108,6 @@ RUN set -eux; \
     mkdir -p /docker-entrypoint-initdb.d; \
     echo '"\e[A": history-search-backward' >>/etc/inputrc; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
+    sed -i "/^#PermitUserEnvironment/cPermitUserEnvironment yes" "/etc/ssh/sshd_config"; \
+    sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" "/etc/ssh/sshd_config"; \
     echo done
