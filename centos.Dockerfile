@@ -85,6 +85,8 @@ RUN set -eux; \
         which \
         zlib-devel \
     ; \
+    ln -s cmake3 /usr/bin/cmake; \
+    ln -s ctest3 /usr/bin/ctest; \
     yum clean all; \
     mkdir -p "$HOME/src"; \
     cd "$HOME/src"; \
