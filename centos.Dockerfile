@@ -24,7 +24,7 @@ RUN set -eux; \
         bison \
         bzip2-devel \
         ccache \
-        cmake \
+        cmake3 \
         CUnit \
         CUnit-devel \
         expat \
