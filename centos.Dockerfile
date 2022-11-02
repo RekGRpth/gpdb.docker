@@ -93,11 +93,11 @@ RUN set -eux; \
     mkdir -p /docker-entrypoint-initdb.d; \
     echo '"\e[A": history-search-backward' >>/etc/inputrc; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
-    ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa; \
-    cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys; \
-    chmod 0600 /root/.ssh/authorized_keys; \
+#    ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa; \
+#    cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys; \
+#    chmod 0600 /root/.ssh/authorized_keys; \
 #    echo -e "password\npassword" | passwd 2> /dev/null; \
-    { ssh-keyscan localhost; ssh-keyscan 0.0.0.0; } >> /root/.ssh/known_hosts; \
+#    { ssh-keyscan localhost; ssh-keyscan 0.0.0.0; } >> /root/.ssh/known_hosts; \
     ssh-keygen -f /etc/ssh/ssh_host_key -N '' -t rsa1; \
     ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa; \
     ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa; \
@@ -105,5 +105,5 @@ RUN set -eux; \
     sed -ie "s|Defaults    requiretty|#Defaults    requiretty|" /etc/sudoers; \
     sed -i "/^#PermitUserEnvironment/cPermitUserEnvironment yes" /etc/ssh/sshd_config; \
     sed -ir "s@^HostKey /etc/ssh/ssh_host_ecdsa_key\$@#&@;s@^HostKey /etc/ssh/ssh_host_ed25519_key\$@#&@" /etc/ssh/sshd_config; \
-    sed -ir "s/UsePAM yes/UsePAM no/g;s/PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config; \
+#    sed -ir "s/UsePAM yes/UsePAM no/g;s/PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config; \
     echo done

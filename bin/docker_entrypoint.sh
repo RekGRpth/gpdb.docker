@@ -22,11 +22,13 @@ if [ "$(id -u)" = '0' ]; then
     fi
     if [ ! -f "$HOME/.ssh/id_rsa" ]; then
         install -d -m 0700 -o "$USER" -g "$GROUP" "$HOME/.ssh"
-        ssh-keygen -t rsa -N "" -f "$HOME/.ssh/id_rsa"; \
-        cat "$HOME/.ssh/id_rsa.pub" > "$HOME/.ssh/authorized_keys"; \
-        chmod 0600 "$HOME/.ssh/authorized_keys"; \
+        ssh-keygen -t rsa -N "" -f "$HOME/.ssh/id_rsa"
+        cat "$HOME/.ssh/id_rsa.pub" > "$HOME/.ssh/authorized_keys"
+        chmod 0600 "$HOME/.ssh/authorized_keys"
+        echo "SendEnv GP* PG* PXF*" > "$HOME/.ssh/config"
     fi
-    { ssh-keyscan localhost; ssh-keyscan 0.0.0.0; } > "$HOME/.ssh/known_hosts"; \
-    chown -R "$USER":"$GROUP" "$HOME/.ssh"; \
+    ssh-keyscan localhost > "$HOME/.ssh/known_hosts"
+    ssh-keyscan 0.0.0.0 >> "$HOME/.ssh/known_hosts"
+    chown -R "$USER":"$GROUP" "$HOME/.ssh"
 fi
 exec "$@"
