@@ -13,6 +13,9 @@ RUN set -eux; \
     useradd --system --uid 1000 --home "$HOME" --shell /bin/bash --gid "$GROUP" "$USER"; \
     yum makecache; \
     yum install -y \
+        epel-release \
+    ; \
+    yum install -y \
         ant-junit \
         apache-ivy \
         apr-devel \
@@ -24,7 +27,6 @@ RUN set -eux; \
         cmake \
         CUnit \
         CUnit-devel \
-        epel-release \
         expat \
         expat-devel \
         flex \
