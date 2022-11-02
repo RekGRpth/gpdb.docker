@@ -82,6 +82,7 @@ RUN set -eux; \
         time \
         unzip \
         wget \
+        which \
         zlib-devel \
     ; \
     yum clean all; \
