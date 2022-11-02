@@ -20,4 +20,4 @@ docker run \
     --network name=docker,alias=gpdb6."$(hostname -d)" \
     --privileged \
     --restart always \
-    "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-ubuntu}" /usr/sbin/sshd -De
+    "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-centos}" /usr/sbin/sshd -De

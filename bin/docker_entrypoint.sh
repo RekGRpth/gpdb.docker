@@ -7,7 +7,6 @@ elif [ "$GP_MAJOR" = '7' ]; then
     update-alternatives --install /usr/bin/python python /usr/bin/python2 1
     update-alternatives --install /usr/bin/python python /usr/bin/python3 2
 fi
-service ssh start
 if [ "$(id -u)" = '0' ]; then
     if [ -n "$GROUP" ] && [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "$(id -g "$GROUP")" ]; then
         test -n "$USER" && usermod --home /tmp "$USER"
@@ -23,12 +22,11 @@ if [ "$(id -u)" = '0' ]; then
     fi
     if [ ! -f "$HOME/.ssh/id_rsa" ]; then
         install -d -m 0700 -o "$USER" -g "$GROUP" "$HOME/.ssh"
-        gosu "$USER" ssh-keygen -t rsa -N "" -f "$HOME/.ssh/id_rsa"; \
+        ssh-keygen -t rsa -N "" -f "$HOME/.ssh/id_rsa"; \
         cat "$HOME/.ssh/id_rsa.pub" > "$HOME/.ssh/authorized_keys"; \
         chmod 0600 "$HOME/.ssh/authorized_keys"; \
     fi
-    { gosu "$USER" ssh-keyscan localhost; gosu "$USER" ssh-keyscan "$(hostname)"; gosu "$USER" ssh-keyscan 0.0.0.0; } > "$HOME/.ssh/known_hosts"; \
+    { ssh-keyscan localhost; ssh-keyscan 0.0.0.0; } > "$HOME/.ssh/known_hosts"; \
     chown -R "$USER":"$GROUP" "$HOME/.ssh"; \
 fi
-service ssh stop
 exec "$@"
