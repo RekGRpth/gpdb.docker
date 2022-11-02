@@ -26,9 +26,8 @@ if [ "$(id -u)" = '0' ]; then
         cat "$HOME/.ssh/id_rsa.pub" > "$HOME/.ssh/authorized_keys"
         chmod 0600 "$HOME/.ssh/authorized_keys"
         echo "SendEnv GP* PG* PXF*" > "$HOME/.ssh/config"
+        echo "StrictHostKeyChecking no" >> "$HOME/.ssh/config"
     fi
-    ssh-keyscan localhost > "$HOME/.ssh/known_hosts"
-    ssh-keyscan 0.0.0.0 >> "$HOME/.ssh/known_hosts"
     chown -R "$USER":"$GROUP" "$HOME/.ssh"
 fi
 exec "$@"
