@@ -13,6 +13,7 @@ RUN set -eux; \
     useradd --system --uid 1000 --home "$HOME" --shell /bin/bash --gid "$GROUP" "$USER"; \
     yum makecache; \
     yum install -y \
+        centos-release-scl \
         epel-release \
     ; \
     yum install -y \
@@ -22,20 +23,27 @@ RUN set -eux; \
         apr-util-devel \
         autoconf \
         bison \
+        bzip2-debuginfo \
         bzip2-devel \
         ccache \
         cmake3 \
         CUnit \
         CUnit-devel \
+        curl-debuginfo \
+        cyrus-sasl-debuginfo \
+        devtoolset-7-toolchain \
+        e2fsprogs-debuginfo \
         expat \
         expat-devel \
         flex \
         gcc \
         gcc-c++ \
+        gcc-debuginfo \
         gdal-devel \
         gdb \
         geos-devel \
         git \
+        glibc-debuginfo \
         golang \
         gperf \
         htop \
@@ -44,25 +52,41 @@ RUN set -eux; \
         java-1.8.0-openjdk-devel \
         jq \
         json-c-devel \
-        krb5-devel \
-        krb5-server \
-        krb5-workstation \
+        keyutils-debuginfo \
+#        krb5-debuginfo \
+#        krb5-devel \
+#        krb5-server \
+#        krb5-workstation \
         libcurl-devel \
+        libdb-debuginfo \
         libevent-devel \
         libicu \
+        libidn-debuginfo \
         libkadm5 \
+        libselinux-debuginfo \
+        libsepol-debuginfo \
+        libssh2-debuginfo \
         libtool \
         libuuid-devel \
         libuv-devel \
+        libverto-debuginfo \
+        libxml2-debuginfo \
         libxml2-devel \
         libxslt-devel \
         libyaml-devel \
         libzstd-devel \
         make \
         net-tools \
+        nspr-debuginfo \
+        nss-debuginfo \
+        nss-softokn-debuginfo \
+        nss-util-debuginfo \
+        openldap-debuginfo \
         openssh-server \
+        openssl-debuginfo \
         openssl-devel \
         pam-devel \
+        pcre-debuginfo \
         perl-Env \
         perl-ExtUtils-Embed \
         perl-IPC-Run \
@@ -83,7 +107,11 @@ RUN set -eux; \
         unzip \
         wget \
         which \
+        xz-debuginfo \
+#        yum-plugin-auto-update-debug-info \
+        zlib-debuginfo \
         zlib-devel \
+        zstd-debuginfo \
     ; \
     ln -s cmake3 /usr/bin/cmake; \
     ln -s ctest3 /usr/bin/ctest; \
