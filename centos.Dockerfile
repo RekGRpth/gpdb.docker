@@ -23,27 +23,27 @@ RUN set -eux; \
         apr-util-devel \
         autoconf \
         bison \
-        bzip2-debuginfo \
+#        bzip2-debuginfo \
         bzip2-devel \
         ccache \
         cmake3 \
         CUnit \
         CUnit-devel \
-        curl-debuginfo \
-        cyrus-sasl-debuginfo \
+#        curl-debuginfo \
+#        cyrus-sasl-debuginfo \
         devtoolset-7-toolchain \
-        e2fsprogs-debuginfo \
+#        e2fsprogs-debuginfo \
         expat \
         expat-devel \
         flex \
         gcc \
         gcc-c++ \
-        gcc-debuginfo \
+#        gcc-debuginfo \
         gdal-devel \
         gdb \
         geos-devel \
         git \
-        glibc-debuginfo \
+#        glibc-debuginfo \
         golang \
         gperf \
         htop \
@@ -52,7 +52,7 @@ RUN set -eux; \
         java-1.8.0-openjdk-devel \
         jq \
         json-c-devel \
-        keyutils-debuginfo \
+#        keyutils-debuginfo \
 #        krb5-debuginfo \
 #        krb5-devel \
 #        krb5-server \
@@ -60,33 +60,34 @@ RUN set -eux; \
         libcurl-devel \
         libdb-debuginfo \
         libevent-devel \
+#        libevent-devel \
         libicu \
-        libidn-debuginfo \
+#        libidn-debuginfo \
         libkadm5 \
-        libselinux-debuginfo \
-        libsepol-debuginfo \
-        libssh2-debuginfo \
+#        libselinux-debuginfo \
+#        libsepol-debuginfo \
+#        libssh2-debuginfo \
         libtool \
         libuuid-devel \
         libuv-devel \
-        libverto-debuginfo \
-        libxml2-debuginfo \
+#        libverto-debuginfo \
+#        libxml2-debuginfo \
         libxml2-devel \
         libxslt-devel \
         libyaml-devel \
         libzstd-devel \
         make \
         net-tools \
-        nspr-debuginfo \
-        nss-debuginfo \
-        nss-softokn-debuginfo \
-        nss-util-debuginfo \
-        openldap-debuginfo \
+#        nspr-debuginfo \
+#        nss-debuginfo \
+#        nss-softokn-debuginfo \
+#        nss-util-debuginfo \
+#        openldap-debuginfo \
         openssh-server \
-        openssl-debuginfo \
+#        openssl-debuginfo \
         openssl-devel \
         pam-devel \
-        pcre-debuginfo \
+#        pcre-debuginfo \
         perl-Env \
         perl-ExtUtils-Embed \
         perl-IPC-Run \
@@ -95,23 +96,25 @@ RUN set -eux; \
         proj-devel \
         python2-pip \
         python3-pip \
-        python-devel \
-        python-pip \
+        python2-devel \
+        python3-devel \
+#        python-pip \
         python-psutil \
         python-setuptools \
         readline-devel \
         rsync \
-        snappy-devel \
+#        snappy-devel \
         sudo \
         time \
         unzip \
         wget \
         which \
-        xz-debuginfo \
+        xerces-c-devel \
+#        xz-debuginfo \
 #        yum-plugin-auto-update-debug-info \
-        zlib-debuginfo \
+#        zlib-debuginfo \
         zlib-devel \
-        zstd-debuginfo \
+#        zstd-debuginfo \
     ; \
     ln -s cmake3 /usr/bin/cmake; \
     ln -s ctest3 /usr/bin/ctest; \
@@ -130,4 +133,7 @@ RUN set -eux; \
     sed -ie "s|Defaults    requiretty|#Defaults    requiretty|" /etc/sudoers; \
     sed -i "/^#PermitUserEnvironment/cPermitUserEnvironment yes" /etc/ssh/sshd_config; \
     sed -ir "s@^HostKey /etc/ssh/ssh_host_ecdsa_key\$@#&@;s@^HostKey /etc/ssh/ssh_host_ed25519_key\$@#&@" /etc/ssh/sshd_config; \
+    echo /usr/local/lib >> /etc/ld.so.conf; \
+    echo /usr/local/lib64 >> /etc/ld.so.conf; \
+    ldconfig; \
     echo done
