@@ -27,8 +27,8 @@ RUN set -eux; \
         bzip2-devel \
         ccache \
         cmake3 \
-        CUnit \
-        CUnit-devel \
+#        CUnit \
+#        CUnit-devel \
 #        curl-debuginfo \
 #        cyrus-sasl-debuginfo \
         devtoolset-11-toolchain \
@@ -36,11 +36,11 @@ RUN set -eux; \
         expat \
         expat-devel \
         flex \
-        gcc \
-        gcc-c++ \
+#        gcc \
+#        gcc-c++ \
 #        gcc-debuginfo \
         gdal-devel \
-        gdb \
+#        gdb \
         geos-devel \
         git \
 #        glibc-debuginfo \
@@ -76,7 +76,7 @@ RUN set -eux; \
         libxslt-devel \
         libyaml-devel \
         libzstd-devel \
-        make \
+#        make \
         net-tools \
 #        nspr-debuginfo \
 #        nss-debuginfo \
