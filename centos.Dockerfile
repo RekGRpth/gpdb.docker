@@ -31,7 +31,7 @@ RUN set -eux; \
         CUnit-devel \
 #        curl-debuginfo \
 #        cyrus-sasl-debuginfo \
-        devtoolset-7-toolchain \
+        devtoolset-11-toolchain \
 #        e2fsprogs-debuginfo \
         expat \
         expat-devel \
