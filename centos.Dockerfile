@@ -94,15 +94,16 @@ RUN set -eux; \
         perl-JSON \
         perl-Test-Base \
         proj-devel \
-        python2-pip \
-        python3-pip \
+        PyGreSQL \
         python2-devel \
-        python3-devel \
-#        python-pip \
-#        python2-psutil \
-#        python3-psutil \
+        python2-pip \
+        python2-psutil \
 #        python2-setuptools \
+        python3-devel \
+        python3-pip \
+        python3-psutil \
 #        python3-setuptools \
+#        python-pip \
         readline-devel \
         rsync \
 #        snappy-devel \
@@ -111,7 +112,7 @@ RUN set -eux; \
         unzip \
         wget \
         which \
-#        xerces-c-devel \
+        xerces-c-devel \
 #        xz-debuginfo \
 #        yum-plugin-auto-update-debug-info \
 #        zlib-debuginfo \
