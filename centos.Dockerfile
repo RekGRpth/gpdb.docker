@@ -99,8 +99,10 @@ RUN set -eux; \
         python2-devel \
         python3-devel \
 #        python-pip \
-        python-psutil \
-        python-setuptools \
+        python2-psutil \
+        python3-psutil \
+#        python2-setuptools \
+#        python3-setuptools \
         readline-devel \
         rsync \
 #        snappy-devel \
