@@ -109,7 +109,7 @@ RUN set -eux; \
         unzip \
         wget \
         which \
-        xerces-c-devel \
+#        xerces-c-devel \
 #        xz-debuginfo \
 #        yum-plugin-auto-update-debug-info \
 #        zlib-debuginfo \
@@ -136,4 +136,6 @@ RUN set -eux; \
     echo /usr/local/lib >> /etc/ld.so.conf; \
     echo /usr/local/lib64 >> /etc/ld.so.conf; \
     ldconfig; \
+    localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
+    localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \
     echo done
