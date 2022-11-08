@@ -78,6 +78,7 @@ RUN set -eux; \
         libzstd-devel \
 #        make \
         net-tools \
+        ninja-build \
 #        nspr-debuginfo \
 #        nss-debuginfo \
 #        nss-softokn-debuginfo \
