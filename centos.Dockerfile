@@ -105,6 +105,7 @@ RUN set -eux; \
         python3-psutil \
 #        python3-setuptools \
 #        python-pip \
+        python-yaml \
         readline-devel \
         rsync \
 #        snappy-devel \
