@@ -1,9 +1,9 @@
 FROM ubuntu
 ADD bin /usr/local/bin
 ENTRYPOINT [ "docker_entrypoint.sh" ]
-ENV GROUP=gpdb \
+ENV GROUP=postgres \
     HOME=/home \
-    USER=gpdb
+    USER=postgres
 MAINTAINER RekGRpth
 WORKDIR "$HOME"
 RUN set -eux; \
