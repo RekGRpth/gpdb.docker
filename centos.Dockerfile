@@ -16,6 +16,7 @@ RUN set -eux; \
         centos-release-scl \
         epel-release \
     ; \
+    rpm -Uvh http://repo.openfusion.net/centos7-x86_64/openfusion-release-0.7-1.of.el7.noarch.rpm; \
     yum install -y \
         ant-junit \
         apache-ivy \
@@ -111,6 +112,7 @@ RUN set -eux; \
 #        snappy-devel \
         sudo \
         time \
+        ucspi-tcp \
         unzip \
         wget \
         which \
