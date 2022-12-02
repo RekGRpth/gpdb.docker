@@ -89,6 +89,7 @@ RUN set -eux; \
 #        openssl-debuginfo \
         openssl-devel \
         pam-devel \
+        parallel \
 #        pcre-debuginfo \
         perl-Env \
         perl-ExtUtils-Embed \
