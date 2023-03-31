@@ -58,6 +58,7 @@ RUN set -eux; \
 #        krb5-devel \
 #        krb5-server \
 #        krb5-workstation \
+        libcgroup-tools \
         libcurl-devel \
         libdb-debuginfo \
         libevent-devel \
