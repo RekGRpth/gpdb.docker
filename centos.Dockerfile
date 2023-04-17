@@ -78,6 +78,7 @@ RUN set -eux; \
         libxslt-devel \
         libyaml-devel \
         libzstd-devel \
+        lldb \
 #        make \
         net-tools \
         ninja-build \
