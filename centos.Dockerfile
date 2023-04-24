@@ -80,6 +80,7 @@ RUN set -eux; \
         libzstd-devel \
         lldb \
 #        make \
+        netcat \
         net-tools \
         ninja-build \
 #        nspr-debuginfo \
