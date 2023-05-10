@@ -146,7 +146,9 @@ RUN set -eux; \
     sed -ir "s@^HostKey /etc/ssh/ssh_host_ecdsa_key\$@#&@;s@^HostKey /etc/ssh/ssh_host_ed25519_key\$@#&@" /etc/ssh/sshd_config; \
     echo /usr/local/lib >> /etc/ld.so.conf; \
     echo /usr/local/lib64 >> /etc/ld.so.conf; \
+    echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" >>/etc/sudoers; \
     ldconfig; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
     localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \
     echo done
+USER "$USER"
