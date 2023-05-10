@@ -21,4 +21,4 @@ docker run \
     --network name=docker,alias=gpdb7."$(hostname -d)" \
     --privileged \
     --restart always \
-    "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-centos}" /usr/sbin/sshd -De
+    "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-centos}" sudo /usr/sbin/sshd -De
