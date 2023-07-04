@@ -38,7 +38,7 @@ RUN set -eux; \
         expat-devel \
         flex \
 #        gcc \
-#        gcc-c++ \
+        gcc-c++ \
 #        gcc-debuginfo \
         gdal-devel \
 #        gdb \
@@ -109,6 +109,8 @@ RUN set -eux; \
         python3-pip \
         python3-psutil \
 #        python3-setuptools \
+        python-lockfile \
+        python-paramiko \
 #        python-pip \
         python-yaml \
         readline-devel \
