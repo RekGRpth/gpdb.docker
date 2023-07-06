@@ -14,8 +14,16 @@ RUN set -eux; \
     yum makecache; \
     yum install -y \
         centos-release-scl \
+        centos-release-scl-rh \
         epel-release \
     ; \
+    echo -e "\
+[llvmtoolset-build] \n\
+name            = LLVM Toolset 11.0 - Build \n\
+baseurl         = https://buildlogs.centos.org/c7-llvm-toolset-11.0.x86_64/ \n\
+enabled         = 1 \n\
+gpgcheck        = 0\
+" > /etc/yum.repos.d/llvmtoolset-build.repo; \
     rpm -Uvh http://repo.openfusion.net/centos7-x86_64/openfusion-release-0.7-1.of.el7.noarch.rpm; \
     yum install -y \
         ant-junit \
@@ -79,6 +87,8 @@ RUN set -eux; \
         libyaml-devel \
         libzstd-devel \
         lldb \
+        llvm-toolset-11.0-clang \
+        llvm-toolset-11.0-clang-tools-extra \
 #        make \
         netcat \
         net-tools \
