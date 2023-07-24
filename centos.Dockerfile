@@ -118,10 +118,12 @@ gpgcheck        = 0\
         python3-devel \
         python3-pip \
         python3-psutil \
+        python3-psycopg2 \
 #        python3-setuptools \
         python-lockfile \
         python-paramiko \
 #        python-pip \
+#        python-psycopg2 \
         python-yaml \
         readline-devel \
         rsync \
