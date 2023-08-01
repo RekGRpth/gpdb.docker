@@ -23,4 +23,5 @@ if [ "$(id -u)" = '0' ]; then
     fi
     chown -R "$USER":"$GROUP" "$HOME/.ssh"
 fi
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 exec "$@"

@@ -6,6 +6,7 @@ docker volume create gpdb
 docker stop gpdb5 || echo $?
 docker rm gpdb5 || echo $?
 docker run \
+    --cap-add=SYS_PTRACE \
     --detach \
     --env GP_MAJOR=5 \
     --env GROUP_ID="$(id -g)" \
