@@ -86,6 +86,7 @@ gpgcheck        = 0\
         libxslt-devel \
         libyaml-devel \
         libzstd-devel \
+        libzstd-static \
         lldb \
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
