@@ -127,6 +127,7 @@ gpgcheck        = 0\
 #        python-psycopg2 \
         python-yaml \
         readline-devel \
+        rh-git227-git \
         rsync \
 #        snappy-devel \
         sudo \
