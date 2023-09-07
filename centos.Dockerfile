@@ -13,6 +13,7 @@ RUN set -eux; \
     useradd --system --uid 1000 --home "$HOME" --shell /bin/bash --gid "$GROUP" "$USER"; \
     yum makecache; \
     yum install -y \
+        centos-release-openstack-train \
         centos-release-scl \
         centos-release-scl-rh \
         epel-release \
@@ -111,6 +112,7 @@ gpgcheck        = 0\
         perl-JSON \
         perl-Test-Base \
         proj-devel \
+        protobuf-compiler \
         PyGreSQL \
         python2-devel \
         python2-pip \
@@ -124,6 +126,7 @@ gpgcheck        = 0\
         python-lockfile \
         python-paramiko \
 #        python-pip \
+        python-protobuf \
 #        python-psycopg2 \
         python-yaml \
         readline-devel \
