@@ -26,7 +26,7 @@ enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
     rpm -Uvh http://repo.openfusion.net/centos7-x86_64/openfusion-release-0.7-1.of.el7.noarch.rpm; \
-    yum install -y \
+    yum install -y --skip-broken \
         ant-junit \
         apache-ivy \
         apr-devel \
