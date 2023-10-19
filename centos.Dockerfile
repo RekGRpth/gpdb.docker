@@ -114,7 +114,7 @@ gpgcheck        = 0\
         proj-devel \
         protobuf-compiler \
         PyGreSQL \
-        python2-behave \
+#        python2-behave \
         python2-devel \
         python2-pip \
         python2-psutil \
@@ -147,6 +147,9 @@ gpgcheck        = 0\
         zlib-devel \
 #        zstd-debuginfo \
     ; \
+#    pip install --no-cache-dir --prefix /usr/local \
+#        allure-behave==2.4.0 \
+#    ; \
     ln -s cmake3 /usr/bin/cmake; \
     ln -s ctest3 /usr/bin/ctest; \
     yum clean all; \
