@@ -147,9 +147,12 @@ gpgcheck        = 0\
         zlib-devel \
 #        zstd-debuginfo \
     ; \
-#    pip install --no-cache-dir --prefix /usr/local \
-#        allure-behave==2.4.0 \
-#    ; \
+    pip install --no-cache-dir --ignore-installed \
+        "pip<21.0" \
+    ; \
+    pip install --no-cache-dir --prefix /usr/local \
+        allure-behave==2.4.0 \
+    ; \
     ln -s cmake3 /usr/bin/cmake; \
     ln -s ctest3 /usr/bin/ctest; \
     yum clean all; \
