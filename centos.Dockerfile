@@ -114,6 +114,7 @@ gpgcheck        = 0\
         proj-devel \
         protobuf-compiler \
         PyGreSQL \
+        python2-behave \
         python2-devel \
         python2-pip \
         python2-psutil \
