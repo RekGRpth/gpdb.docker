@@ -150,7 +150,7 @@ gpgcheck        = 0\
     pip install --no-cache-dir --ignore-installed \
         "pip<21.0" \
     ; \
-    pip install --no-cache-dir --prefix /usr/local \
+    pip install --no-cache-dir \
         allure-behave==2.4.0 \
     ; \
     ln -s cmake3 /usr/bin/cmake; \
@@ -172,6 +172,9 @@ gpgcheck        = 0\
     sed -ir "s@^HostKey /etc/ssh/ssh_host_ecdsa_key\$@#&@;s@^HostKey /etc/ssh/ssh_host_ed25519_key\$@#&@" /etc/ssh/sshd_config; \
     echo /usr/local/lib >> /etc/ld.so.conf; \
     echo /usr/local/lib64 >> /etc/ld.so.conf; \
+#    echo "$HOME/.local5/lib" >>/etc/ld.so.conf; \
+#    echo "$HOME/.local6/lib" >>/etc/ld.so.conf; \
+#    echo "$HOME/.local7/lib" >>/etc/ld.so.conf; \
     echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" >>/etc/sudoers; \
     ldconfig; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \

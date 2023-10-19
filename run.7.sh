@@ -19,6 +19,7 @@ docker run \
     --mount type=bind,source=/etc/certs,destination=/etc/certs,readonly \
     --mount type=bind,source=/sys,destination=/sys,readonly \
     --mount type=volume,source=gpdb,destination=/home \
+    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local7",destination=/usr/local \
     --mount type=bind,source=/tmpfs,destination=/tmpfs \
     --name gpdb7 \
     --network name=docker,alias=gpdb7."$(hostname -d)" \
