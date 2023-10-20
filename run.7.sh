@@ -20,7 +20,7 @@ docker run \
     --mount type=bind,source=/sys,destination=/sys,readonly \
     --mount type=volume,source=gpdb,destination=/home \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local7",destination=/usr/local \
-    --mount type=bind,source=/tmpfs/data7,destination=/home/data7 \
+    --mount type=bind,source=/tmpfs/data7,destination=/tmpfs/data7 \
     --name gpdb7 \
     --network name=docker,alias=gpdb7."$(hostname -d)" \
     --privileged \
