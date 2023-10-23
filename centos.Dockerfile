@@ -37,7 +37,7 @@ gpgcheck        = 0\
         bzip2-devel \
         ccache \
         cmake3 \
-        cpan \
+#        cpan \
 #        CUnit \
 #        CUnit-devel \
 #        curl-debuginfo \
@@ -107,11 +107,15 @@ gpgcheck        = 0\
         pam-devel \
         parallel \
 #        pcre-debuginfo \
+#        perl-Digest \
+        perl-Digest-SHA \
         perl-Env \
         perl-ExtUtils-Embed \
         perl-IPC-Run \
         perl-JSON \
+        perl-JSON-PP \
         perl-Test-Base \
+        perl-YAML \
         proj-devel \
         protobuf-compiler \
         PyGreSQL \
@@ -154,7 +158,7 @@ gpgcheck        = 0\
     pip install --no-cache-dir \
         allure-behave==2.4.0 \
     ; \
-    cpan -Ti JSON/PP.pm; \
+#    cpan -Ti JSON/PP.pm; \
     ln -s cmake3 /usr/bin/cmake; \
     ln -s ctest3 /usr/bin/ctest; \
     yum clean all; \
