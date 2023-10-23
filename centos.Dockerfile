@@ -154,6 +154,7 @@ gpgcheck        = 0\
     pip install --no-cache-dir \
         allure-behave==2.4.0 \
     ; \
+    cpan -Ti JSON/PP.pm; \
     ln -s cmake3 /usr/bin/cmake; \
     ln -s ctest3 /usr/bin/ctest; \
     yum clean all; \
