@@ -69,6 +69,7 @@ gpgcheck        = 0\
 #        krb5-devel \
 #        krb5-server \
 #        krb5-workstation \
+        lcov \
         libcgroup-tools \
         libcurl-devel \
         libdb-debuginfo \
@@ -119,6 +120,7 @@ gpgcheck        = 0\
         perl-JSON-PP \
         perl-Test-Base \
         perl-YAML \
+#        postgresql-devel \
         proj-devel \
         protobuf-compiler \
         PyGreSQL \
@@ -148,6 +150,7 @@ gpgcheck        = 0\
         ucspi-tcp \
         uncrustify \
         unzip \
+        valgrind \
         wget \
         which \
         xerces-c-devel \
