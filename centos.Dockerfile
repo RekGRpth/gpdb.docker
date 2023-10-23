@@ -37,6 +37,7 @@ gpgcheck        = 0\
         bzip2-devel \
         ccache \
         cmake3 \
+        cpan \
 #        CUnit \
 #        CUnit-devel \
 #        curl-debuginfo \
