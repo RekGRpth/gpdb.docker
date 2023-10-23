@@ -93,6 +93,7 @@ gpgcheck        = 0\
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
 #        make \
+        meson \
         netcat \
         net-tools \
         ninja-build \
@@ -143,6 +144,7 @@ gpgcheck        = 0\
         sudo \
         time \
         ucspi-tcp \
+        uncrustify \
         unzip \
         wget \
         which \
