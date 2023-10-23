@@ -18,6 +18,7 @@ RUN set -eux; \
         centos-release-scl-rh \
         epel-release \
     ; \
+#    yum install -y https://centos7.iuscommunity.org/ius-release.rpm; \
     echo -e "\
 [llvmtoolset-build] \n\
 name            = LLVM Toolset 11.0 - Build \n\
@@ -139,6 +140,7 @@ gpgcheck        = 0\
         python-yaml \
         readline-devel \
         rh-git227-git \
+#        rh-python38 \
         rsync \
 #        snappy-devel \
         sudo \
@@ -161,9 +163,13 @@ gpgcheck        = 0\
     pip install --no-cache-dir \
         allure-behave==2.4.0 \
     ; \
+#    pip3 install --no-cache-dir \
+#        meson \
+#    ; \
     cpan -Ti YAML:XS; \
     ln -s cmake3 /usr/bin/cmake; \
     ln -s ctest3 /usr/bin/ctest; \
+#    ln -fs /usr/lib64/python3.6/lib-dynload /usr/lib/python3.6/lib-dynload; \
     yum clean all; \
     mkdir -p "$HOME/src"; \
     cd "$HOME/src"; \
