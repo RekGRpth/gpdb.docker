@@ -19,8 +19,8 @@ docker run \
     --mount type=bind,source=/etc/certs,destination=/etc/certs,readonly \
     --mount type=bind,source=/sys,destination=/sys,readonly \
     --mount type=volume,source=gpdb,destination=/home \
-    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local5",destination=/usr/local \
-    --mount type=bind,source=/tmpfs/data5,destination=/home/.data5 \
+    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local/5",destination=/usr/local \
+    --mount type=bind,source=/tmpfs/data/5,destination=/home/.data/5 \
     --name gpdb5 \
     --network name=docker,alias=gpdb5."$(hostname -d)" \
     --privileged \
