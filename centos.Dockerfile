@@ -111,8 +111,8 @@ gpgcheck        = 0\
         pam-devel \
         parallel \
 #        pcre-debuginfo \
-#        perl-Digest \
         perl-core \
+#        perl-Digest \
         perl-Digest-SHA \
         perl-Env \
         perl-ExtUtils-Embed \
@@ -124,6 +124,7 @@ gpgcheck        = 0\
 #        postgresql-devel \
         proj-devel \
         protobuf-compiler \
+        psmisc \
         PyGreSQL \
 #        python2-behave \
         python2-devel \
