@@ -57,6 +57,7 @@ gpgcheck        = 0\
         geos-devel \
         git \
 #        glibc-debuginfo \
+        gmp-devel \
         golang \
         gperf \
         htop \
@@ -72,6 +73,7 @@ gpgcheck        = 0\
 #        krb5-workstation \
 #        lcov \
         libcgroup-tools \
+        libcsv-devel \
         libcurl-devel \
         libdb-debuginfo \
         libevent-devel \
@@ -79,6 +81,7 @@ gpgcheck        = 0\
         libicu \
 #        libidn-debuginfo \
         libkadm5 \
+        librdkafka-devel \
 #        libselinux-debuginfo \
 #        libsepol-debuginfo \
 #        libssh2-debuginfo \
