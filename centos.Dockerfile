@@ -27,7 +27,6 @@ enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
     rpm -Uvh http://repo.openfusion.net/centos7-x86_64/openfusion-release-0.7-1.of.el7.noarch.rpm; \
-    rpm -Uvh https://github.com/linux-test-project/lcov/releases/download/v1.15/lcov-1.15-1.noarch.rpm; \
     yum install -y --skip-broken \
         ant-junit \
         apache-ivy \
@@ -165,6 +164,7 @@ gpgcheck        = 0\
         zlib-devel \
 #        zstd-debuginfo \
     ; \
+    rpm -Uvh https://github.com/linux-test-project/lcov/releases/download/v1.15/lcov-1.15-1.noarch.rpm; \
     pip install --no-cache-dir --ignore-installed \
         "pip<21.0" \
     ; \
