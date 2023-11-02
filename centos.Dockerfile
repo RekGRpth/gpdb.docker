@@ -174,7 +174,7 @@ gpgcheck        = 0\
 #    pip3 install --no-cache-dir \
 #        meson \
 #    ; \
-    cpan -Ti YAML:XS; \
+#    cpan -i YAML:XS; \
     ln -s cmake3 /usr/bin/cmake; \
     ln -s ctest3 /usr/bin/ctest; \
 #    ln -fs /usr/lib64/python3.6/lib-dynload /usr/lib/python3.6/lib-dynload; \
