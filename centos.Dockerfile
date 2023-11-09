@@ -44,7 +44,7 @@ gpgcheck        = 0\
 #        curl-debuginfo \
 #        cyrus-sasl-debuginfo \
         devtoolset-11-toolchain \
-        docker \
+#        docker \
 #        e2fsprogs-debuginfo \
         expat \
         expat-devel \
