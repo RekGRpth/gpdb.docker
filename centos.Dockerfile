@@ -85,6 +85,7 @@ gpgcheck        = 0\
 #        libselinux-debuginfo \
 #        libsepol-debuginfo \
 #        libssh2-debuginfo \
+        libssh2-devel \
         libtool \
         libuuid-devel \
         libuv-devel \
