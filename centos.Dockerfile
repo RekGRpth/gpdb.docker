@@ -43,6 +43,7 @@ gpgcheck        = 0\
 #        CUnit-devel \
 #        curl-debuginfo \
 #        cyrus-sasl-debuginfo \
+        cyrus-sasl-gssapi \
         devtoolset-11-toolchain \
 #        docker \
 #        e2fsprogs-debuginfo \
@@ -69,7 +70,8 @@ gpgcheck        = 0\
 #        keyutils-debuginfo \
 #        krb5-debuginfo \
 #        krb5-devel \
-#        krb5-server \
+        krb5-libs \
+        krb5-server \
         krb5-workstation \
 #        lcov \
         libcgroup-tools \
@@ -108,6 +110,7 @@ gpgcheck        = 0\
 #        nss-debuginfo \
 #        nss-softokn-debuginfo \
 #        nss-util-debuginfo \
+        openldap-clients \
 #        openldap-debuginfo \
         openssh-server \
 #        openssl-debuginfo \
