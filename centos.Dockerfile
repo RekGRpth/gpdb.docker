@@ -103,6 +103,7 @@ gpgcheck        = 0\
         llvm-toolset-11.0-clang-tools-extra \
 #        make \
         meson \
+        mc \
         netcat \
         net-tools \
         ninja-build \
