@@ -70,7 +70,7 @@ gpgcheck        = 0\
 #        krb5-debuginfo \
 #        krb5-devel \
 #        krb5-server \
-#        krb5-workstation \
+        krb5-workstation \
 #        lcov \
         libcgroup-tools \
         libcsv-devel \
