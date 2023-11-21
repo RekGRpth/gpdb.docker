@@ -83,7 +83,7 @@ gpgcheck        = 0\
         libicu \
 #        libidn-debuginfo \
         libkadm5 \
-        librdkafka-devel \
+#        librdkafka-devel \
 #        libselinux-debuginfo \
 #        libsepol-debuginfo \
 #        libssh2-debuginfo \
