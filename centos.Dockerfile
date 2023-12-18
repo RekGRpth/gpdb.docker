@@ -69,7 +69,7 @@ gpgcheck        = 0\
         json-c-devel \
 #        keyutils-debuginfo \
 #        krb5-debuginfo \
-#        krb5-devel \
+        krb5-devel \
         krb5-libs \
         krb5-server \
         krb5-workstation \
