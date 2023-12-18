@@ -64,6 +64,7 @@ gpgcheck        = 0\
         htop \
         indent \
         iproute \
+        ipython \
         java-1.8.0-openjdk-devel \
         jq \
         json-c-devel \
