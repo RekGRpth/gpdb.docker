@@ -14,6 +14,7 @@ docker run \
     --env TZ=Asia/Yekaterinburg \
     --env USER_ID="$(id -u)" \
     --hostname gpdb6 \
+    --init \
     --memory=32g \
     --memory-swap=32g \
     --mount type=bind,source=/etc/certs,destination=/etc/certs,readonly \
