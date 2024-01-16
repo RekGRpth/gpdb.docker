@@ -27,6 +27,7 @@ enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
     rpm -Uvh http://repo.openfusion.net/centos7-x86_64/openfusion-release-0.7-1.of.el7.noarch.rpm; \
+    yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y --skip-broken \
         ant-junit \
         apache-ivy \
@@ -152,7 +153,7 @@ gpgcheck        = 0\
 #        python-psycopg2 \
         python-yaml \
         readline-devel \
-        rh-git227-git \
+#        rh-git227-git \
 #        rh-python38 \
         rsync \
 #        snappy-devel \
