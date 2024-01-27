@@ -1,7 +1,7 @@
 #!/bin/sh -eux
 
 #docker pull "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-latest}"
-docker network create --attachable --opt com.docker.network.bridge.name=docker docker || echo $?
+docker network create --attachable --ipv6 --subnet 2001:db8::/112 --opt com.docker.network.bridge.name=docker docker || echo $?
 docker volume create gpdb
 docker stop gpdb6 || echo $?
 docker rm gpdb6 || echo $?
