@@ -29,8 +29,8 @@ gpgcheck        = 0\
     rpm -Uvh http://repo.openfusion.net/centos7-x86_64/openfusion-release-0.7-1.of.el7.noarch.rpm; \
     yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y --skip-broken \
-        ant-junit \
-        apache-ivy \
+#        ant-junit \
+#        apache-ivy \
         apr-devel \
         apr-util-devel \
         autoconf \
@@ -66,7 +66,8 @@ gpgcheck        = 0\
         indent \
         iproute \
         ipython \
-        java-1.8.0-openjdk-devel \
+        java-11-openjdk-devel \
+#        java-1.8.0-openjdk-devel \
         jq \
         json-c-devel \
 #        keyutils-debuginfo \
