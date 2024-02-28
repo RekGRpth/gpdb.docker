@@ -18,7 +18,7 @@ docker run \
     --memory=16g \
     --memory-swap=16g \
     --mount type=bind,source=/etc/certs,destination=/etc/certs,readonly \
-    --mount type=bind,source=/sys,destination=/sys,readonly \
+    --mount type=bind,source=/sys,destination=/sys \
     --mount type=volume,source=gpdb,destination=/home \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local/7",destination=/usr/local \
     --mount type=bind,source=/tmpfs/data/7,destination=/home/.data/7 \
