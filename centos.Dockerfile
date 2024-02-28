@@ -139,6 +139,7 @@ gpgcheck        = 0\
         PyGreSQL \
 #        python2-behave \
         python2-devel \
+        python2-future \
         python2-pip \
         python2-psutil \
 #        python2-setuptools \
