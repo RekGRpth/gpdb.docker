@@ -6,7 +6,6 @@ docker volume create gpdb
 docker stop gpdb5 || echo $?
 docker rm gpdb5 || echo $?
 docker run \
-    --cap-add=SYS_PTRACE \
     --detach \
     --env GP_MAJOR=5 \
     --env GROUP_ID="$(id -g)" \
@@ -18,7 +17,6 @@ docker run \
     --memory=16g \
     --memory-swap=16g \
     --mount type=bind,source=/etc/certs,destination=/etc/certs,readonly \
-    --mount type=bind,source=/sys,destination=/sys \
     --mount type=volume,source=gpdb,destination=/home \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local/5",destination=/usr/local \
     --mount type=bind,source=/tmpfs/data/5,destination=/home/.data/5 \
@@ -26,4 +24,7 @@ docker run \
     --network name=docker,alias=gpdb5."$(hostname -d)" \
     --privileged \
     --restart always \
+    --sysctl 'kernel.sem=500 1024000 200 4096' \
     "ghcr.io/rekgrpth/gpdb.docker:${INPUTS_BRANCH:-centos}" sudo /usr/sbin/sshd -De
+#    --cap-add=SYS_PTRACE \
+#    --mount type=bind,source=/sys,destination=/sys \
