@@ -12,6 +12,7 @@ RUN set -eux; \
     yum install -y --skip-broken \
 #        devtoolset-11-toolchain
 #        gcc-c++ \
+        gdb \
         htop \
         mc \
     ; \
