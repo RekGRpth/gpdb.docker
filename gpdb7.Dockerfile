@@ -4,6 +4,7 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     yum makecache; \
     yum install -y --skip-broken \
+        gdb \
         glibc-locale-source \
         htop \
         mc \
