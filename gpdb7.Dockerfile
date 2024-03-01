@@ -6,6 +6,7 @@ RUN set -eux; \
     yum install -y --skip-broken \
         gdb \
         glibc-locale-source \
+        golang \
         htop \
         mc \
     ; \

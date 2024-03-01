@@ -13,6 +13,7 @@ RUN set -eux; \
 #        devtoolset-11-toolchain
 #        gcc-c++ \
         gdb \
+        golang \
         htop \
         mc \
     ; \
