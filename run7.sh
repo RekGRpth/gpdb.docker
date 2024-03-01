@@ -17,6 +17,7 @@ docker run \
     --memory=16g \
     --memory-swap=16g \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local/${GP_MAJOR}/greenplum-db-devel",destination=/usr/local/greenplum-db-devel \
+    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/src/gpdb${GP_MAJOR}",destination=/home/gpadmin/gpdb_src \
     --mount type=bind,source="/tmpfs/data/${GP_MAJOR}",destination="/home/.data/${GP_MAJOR}" \
     --mount type=volume,source=gpdb,destination=/home/gpadmin \
     --name "gpdb${GP_MAJOR}" \
