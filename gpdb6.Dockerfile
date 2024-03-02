@@ -3,11 +3,20 @@ FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
+    echo -e "\
+[llvmtoolset-build] \n\
+name            = LLVM Toolset 11.0 - Build \n\
+baseurl         = https://buildlogs.centos.org/c7-llvm-toolset-11.0.x86_64/ \n\
+enabled         = 1 \n\
+gpgcheck        = 0\
+" > /etc/yum.repos.d/llvmtoolset-build.repo; \
     yum makecache; \
     yum install -y --skip-broken \
         gdb \
         golang \
         htop \
+        llvm-toolset-11.0-clang \
+        llvm-toolset-11.0-clang-tools-extra \
         mc \
         parallel \
         psmisc \
