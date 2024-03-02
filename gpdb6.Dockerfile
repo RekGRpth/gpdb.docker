@@ -11,7 +11,7 @@ enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
     yum makecache; \
-    yum install -y --skip-broken \
+    yum install -y \
         gdb \
         golang \
         htop \

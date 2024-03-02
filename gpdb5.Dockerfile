@@ -4,7 +4,7 @@ FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     yum makecache; \
-    yum install -y --skip-broken \
+    yum install -y \
         gdb \
         golang \
         htop \
