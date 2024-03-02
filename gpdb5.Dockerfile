@@ -1,5 +1,5 @@
 ARG GP_MAJOR=5
-FROM hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest
+FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
@@ -23,8 +23,12 @@ ENTRYPOINT [ "docker_entrypoint.sh" ]
 
 ADD bin /usr/local/bin
 
+ENV PREFIX=/usr/local
+
+ENV BINDIR="$PREFIX/bin"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
+ENV LD_LIBRARY_PATH="$PREFIX/greenplum-db-devel/lib"
 ENV USER=gpadmin
 
 RUN set -eux; \

@@ -1,5 +1,5 @@
-ARG GP_MAJOR=5
-FROM hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest
+ARG GP_MAJOR=6
+FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
@@ -28,6 +28,9 @@ ENTRYPOINT [ "docker_entrypoint.sh" ]
 
 ADD bin /usr/local/bin
 
+ENV PREFIX=/usr/local
+
+ENV BINDIR="$PREFIX/bin"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
 ENV USER=gpadmin
