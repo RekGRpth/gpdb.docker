@@ -10,7 +10,7 @@ baseurl         = https://buildlogs.centos.org/c7-llvm-toolset-11.0.x86_64/ \n\
 enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
-    yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm; \
+    yum install -y https://packages.endpointdev.com/rhel/7/main/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y \
         gdb \
         git \
