@@ -7,6 +7,7 @@ RUN set -eux; \
         gdb \
         golang \
         htop \
+        libxslt-devel \
         mc \
         psmisc \
     ; \
