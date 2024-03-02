@@ -26,9 +26,10 @@ ADD bin /usr/local/bin
 ENV PREFIX=/usr/local
 
 ENV BINDIR="$PREFIX/bin"
+ENV GPHOME="$PREFIX/greenplum-db-devel"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
-ENV LD_LIBRARY_PATH="$PREFIX/greenplum-db-devel/lib"
+#ENV LD_LIBRARY_PATH="$GPHOME/lib"
 ENV USER=gpadmin
 
 RUN set -eux; \
