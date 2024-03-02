@@ -3,8 +3,10 @@ FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
+    yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y \
         gdb \
+        git \
         golang \
         htop \
         libxslt-devel \
