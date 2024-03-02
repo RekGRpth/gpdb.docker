@@ -3,12 +3,28 @@ FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
-    yum makecache; \
+    echo -e "\
+[llvmtoolset-build] \n\
+name            = LLVM Toolset 11.0 - Build \n\
+baseurl         = https://buildlogs.centos.org/c7-llvm-toolset-11.0.x86_64/ \n\
+enabled         = 1 \n\
+gpgcheck        = 0\
+" > /etc/yum.repos.d/llvmtoolset-build.repo; \
+    echo -e "\
+[centos-sclo-rh] \n\
+name            = CentOS-7 - SCLo rh \n\
+baseurl         = http://mirror.centos.org/centos/7/sclo/x86_64/rh/ \n\
+enabled         = 1 \n\
+gpgcheck        = 0\
+" > /etc/yum.repos.d/centos-sclo-rh.repo; \
+    yum remove -y compiler-rt; \
     yum install -y \
         gdb \
         glibc-locale-source \
         golang \
         htop \
+        llvm-toolset-11.0-clang \
+        llvm-toolset-11.0-clang-tools-extra \
         mc \
         parallel \
     ; \
