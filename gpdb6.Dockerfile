@@ -4,19 +4,12 @@ FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     yum makecache; \
-#    yum install -y \
-#        centos-release-openstack-train \
-#        centos-release-scl \
-#        centos-release-scl-rh \
-#        epel-release \
-#    ; \
     yum install -y --skip-broken \
-#        devtoolset-11-toolchain
-#        gcc-c++ \
         gdb \
         golang \
         htop \
         mc \
+        parallel \
         psmisc \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
