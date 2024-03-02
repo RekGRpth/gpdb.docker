@@ -10,7 +10,6 @@ baseurl         = https://buildlogs.centos.org/c7-llvm-toolset-11.0.x86_64/ \n\
 enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
-    yum makecache; \
     yum install -y \
         gdb \
         golang \
