@@ -8,6 +8,7 @@ docker stop "gpdb$GP_MAJOR" || echo $?
 docker rm "gpdb$GP_MAJOR" || echo $?
 docker run \
     --detach \
+    --env GP_MAJOR="$GP_MAJOR" \
     --env GROUP_ID="$(id -g)" \
     --env LANG=ru_RU.UTF-8 \
     --env TZ=Asia/Yekaterinburg \

@@ -22,7 +22,6 @@ ENTRYPOINT [ "docker_entrypoint.sh" ]
 
 ADD bin /usr/local/bin
 
-ENV GP_MAJOR=$GP_MAJOR
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
 ENV USER=gpadmin
