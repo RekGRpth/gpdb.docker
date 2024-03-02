@@ -1,4 +1,5 @@
-FROM hub.adsw.io/library/gpdb5_regress:latest
+ARG GP_MAJOR=5
+FROM hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
@@ -10,6 +11,7 @@ RUN set -eux; \
         libxslt-devel \
         mc \
         psmisc \
+        python-paramiko \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
     localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \
@@ -20,7 +22,7 @@ ENTRYPOINT [ "docker_entrypoint.sh" ]
 
 ADD bin /usr/local/bin
 
-ENV GP_MAJOR=5
+ENV GP_MAJOR=$GP_MAJOR
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
 ENV USER=gpadmin

@@ -2,4 +2,10 @@
 
 export GP_MAJOR=7
 
-docker build --pull --tag "gpdb${GP_MAJOR}" --file "gpdb${GP_MAJOR}.Dockerfile" . 2>&1 | tee "build${GP_MAJOR}.log"
+docker pull "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
+docker build \
+    --build-arg GP_MAJOR=$GP_MAJOR \
+    --file "gpdb$GP_MAJOR.Dockerfile" \
+    --pull \
+    --tag "gpdb$GP_MAJOR" \
+    . 2>&1 | tee "build$GP_MAJOR.log"
