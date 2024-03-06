@@ -20,6 +20,7 @@ gpgcheck        = 0\
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
         mc \
+        ninja-build \
         parallel \
         psmisc \
     ; \
