@@ -19,7 +19,7 @@ gpgcheck        = 0\
         golang \
         htop \
         libcsv-devel \
-        librdkafka-devel \
+#        librdkafka-devel \
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
         mc \
