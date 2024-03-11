@@ -18,7 +18,7 @@ gpgcheck        = 0\
         gmp-devel \
         golang \
         htop \
-        libcsv-devel
+        libcsv-devel \
         librdkafka-devel \
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
@@ -38,15 +38,8 @@ ADD bin /usr/local/bin
 
 ENV PREFIX=/usr/local
 
-RUN set -eux; \
-    export DEBIAN_FRONTEND=noninteractive; \
-    curl -LJ https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh --output ./cmake-3.20.0-linux-x86_64.sh; \
-    sh cmake-3.20.0-linux-x86_64.sh --prefix="$PREFIX" --skip-license; \
-    rm cmake-3.20.0-linux-x86_64.sh; \
-    echo done
-
 ENV BINDIR="$PREFIX/bin"
-ENV GPHOME="$PREFIX/greenplum-db-devel"
+ENV GPHOME="$PREFIX"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
 ENV USER=gpadmin

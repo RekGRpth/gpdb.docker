@@ -28,10 +28,9 @@ ADD bin /usr/local/bin
 ENV PREFIX=/usr/local
 
 ENV BINDIR="$PREFIX/bin"
-ENV GPHOME="$PREFIX/greenplum-db-devel"
+ENV GPHOME="$PREFIX"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
-#ENV LD_LIBRARY_PATH="$GPHOME/lib"
 ENV USER=gpadmin
 
 RUN set -eux; \
@@ -45,8 +44,6 @@ RUN set -eux; \
     echo '"\e[A": history-search-backward' >>/etc/inputrc; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
-    rpm -i https://ci.arenadata.io/artifactory/ADB/6.7.1_arenadata4/centos/7/community/x86_64/sigar-1.6.5-163.el7.x86_64.rpm; \
-    rpm -i https://ci.arenadata.io/artifactory/ADB/6.7.1_arenadata4/centos/7/community/x86_64/sigar-headers-1.6.5-163.el7.x86_64.rpm; \
     echo done
 
 USER "$USER"
