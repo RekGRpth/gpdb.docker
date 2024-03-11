@@ -13,6 +13,7 @@ gpgcheck        = 0\
     yum install -y https://packages.endpointdev.com/rhel/7/main/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y \
         ccache \
+        cyrus-sasl-gssapi \
         gdb \
         git \
         gmp-devel \
