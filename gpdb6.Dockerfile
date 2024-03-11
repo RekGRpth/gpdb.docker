@@ -15,8 +15,11 @@ gpgcheck        = 0\
         ccache \
         gdb \
         git \
+        gmp-devel \
         golang \
         htop \
+        libcsv-devel
+        librdkafka-devel \
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
         mc \
