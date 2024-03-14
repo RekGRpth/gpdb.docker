@@ -6,6 +6,7 @@ docker network create --attachable --ipv6 --subnet 2001:db8::/112 --opt com.dock
 docker volume create gpdb
 docker stop "gpdb$GP_MAJOR" || echo $?
 docker rm "gpdb$GP_MAJOR" || echo $?
+mkdir -p "/tmpfs/data/$GP_MAJOR" "/tmpfs/data/$GP_MAJOR.test"
 docker run \
     --detach \
     --env GP_MAJOR="$GP_MAJOR" \
@@ -19,6 +20,7 @@ docker run \
     --memory-swap=16g \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local/$GP_MAJOR",destination=/usr/local \
     --mount type=bind,source="/tmpfs/data/$GP_MAJOR",destination="/home/gpadmin/.data/$GP_MAJOR" \
+    --mount type=bind,source="/tmpfs/data/$GP_MAJOR.test",destination="/home/gpadmin/gpdb_src/src/test" \
     --mount type=volume,source=gpdb,destination=/home/gpadmin \
     --name "gpdb$GP_MAJOR" \
     --network name=docker \
