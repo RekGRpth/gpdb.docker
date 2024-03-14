@@ -6,6 +6,7 @@ docker network create --attachable --ipv6 --subnet 2001:db8::/112 --opt com.dock
 docker volume create gpdb
 docker stop "gpdb$GP_MAJOR" || echo $?
 docker rm "gpdb$GP_MAJOR" || echo $?
+mkdir -p "/tmpfs/data/$GP_MAJOR"
 docker run \
     --detach \
     --env GP_MAJOR="$GP_MAJOR" \
