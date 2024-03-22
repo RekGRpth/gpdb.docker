@@ -12,22 +12,52 @@ gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
     yum install -y https://packages.endpointdev.com/rhel/7/main/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y \
+        audit-debuginfo \
+        bzip2-debuginfo \
         ccache \
+        cracklib-debuginfo \
+        curl-debuginfo \
+        cyrus-sasl-debuginfo \
         cyrus-sasl-gssapi \
+        e2fsprogs-debuginfo \
+        gcc-debuginfo \
         gdb \
         git \
+        glibc-debuginfo \
         gmp-devel \
         golang \
         htop \
+        keyutils-debuginfo \
+        krb5-debuginfo \
+        libcap-ng-debuginfo \
         libcsv-devel \
+        libdb-debuginfo \
+        libidn-debuginfo \
 #        librdkafka-devel \
+        libselinux-debuginfo \
+        libsepol-debuginfo \
+        libssh2-debuginfo \
+        libuv-debuginfo \
+        libverto-debuginfo \
+        libxml2-debuginfo \
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
         mc \
         ninja-build \
+        nspr-debuginfo \
+        nss-debuginfo \
+        nss-softokn-debuginfo \
+        nss-util-debuginfo \
+        openldap-debuginfo \
+        openssl-debuginfo \
+        pam-debuginfo \
         parallel \
+        pcre-debuginfo \
         psmisc \
         python-yaml \
+        xerces-c-debuginfo \
+        xz-debuginfo \
+        zlib-debuginfo \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
     localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \
