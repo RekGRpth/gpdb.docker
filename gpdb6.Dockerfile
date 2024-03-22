@@ -11,7 +11,7 @@ enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
     yum install -y https://packages.endpointdev.com/rhel/7/main/x86_64/endpoint-repo.x86_64.rpm; \
-    yum install -y \
+    yum install -y --enablerepo=base-debuginfo,epel-debuginfo \
         audit-debuginfo \
         bzip2-debuginfo \
         ccache \
@@ -57,6 +57,7 @@ gpgcheck        = 0\
         python-yaml \
         xerces-c-debuginfo \
         xz-debuginfo \
+        yum-plugin-auto-update-debug-info \
         zlib-debuginfo \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
