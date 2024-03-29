@@ -11,6 +11,9 @@ enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
     yum install -y https://packages.endpointdev.com/rhel/7/main/x86_64/endpoint-repo.x86_64.rpm; \
+    yum install -y \
+        centos-release-openstack-train \
+    ; \
     yum install -y --enablerepo=base-debuginfo,epel-debuginfo \
         audit-debuginfo \
         bzip2-debuginfo \
@@ -53,7 +56,9 @@ gpgcheck        = 0\
         pam-debuginfo \
         parallel \
         pcre-debuginfo \
+        protobuf-compiler \
         psmisc \
+        python-protobuf \
         python-yaml \
         xerces-c-debuginfo \
         xz-debuginfo \
