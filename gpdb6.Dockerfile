@@ -15,6 +15,7 @@ gpgcheck        = 0\
         centos-release-openstack-train \
     ; \
     yum install -y --enablerepo=base-debuginfo,epel-debuginfo \
+        atop \
         audit-debuginfo \
         bzip2-debuginfo \
         ccache \
