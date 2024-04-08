@@ -10,6 +10,7 @@ baseurl         = https://buildlogs.centos.org/c7-llvm-toolset-11.0.x86_64/ \n\
 enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
+    curl https://repos.baslab.org/rhel/7/bpftools/bpftools.repo --output /etc/yum.repos.d/bpftools.repo; \
     yum install -y https://packages.endpointdev.com/rhel/7/main/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y \
         centos-release-openstack-train \
@@ -17,6 +18,7 @@ gpgcheck        = 0\
     yum install -y --enablerepo=base-debuginfo,epel-debuginfo \
         atop \
         audit-debuginfo \
+        bpftrace \
         bzip2-debuginfo \
         ccache \
         cracklib-debuginfo \
