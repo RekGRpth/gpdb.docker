@@ -95,6 +95,7 @@ RUN set -eux; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
     mv /usr/local /usr/local.parent; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
+    sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
     echo done
 
 USER "$USER"
