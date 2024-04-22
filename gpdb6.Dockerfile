@@ -26,6 +26,7 @@ gpgcheck        = 0\
         cyrus-sasl-debuginfo \
         cyrus-sasl-gssapi \
         e2fsprogs-debuginfo \
+        elfutils-libelf-devel \
         gcc-debuginfo \
         gdb \
         git \
