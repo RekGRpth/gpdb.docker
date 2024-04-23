@@ -101,6 +101,9 @@ RUN set -eux; \
     mv /usr/local /usr/local.parent; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
+    wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh; \
+    sh cmake-*-linux-x86_64.sh --skip-license --prefix=/usr/local; \
+    rm cmake-*-linux-x86_64.sh; \
     echo done
 
 USER "$USER"
