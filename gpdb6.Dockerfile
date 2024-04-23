@@ -47,6 +47,7 @@ gpgcheck        = 0\
         libuv-debuginfo \
         libverto-debuginfo \
         libxml2-debuginfo \
+        llvm-toolset-11.0 \
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
         mc \
