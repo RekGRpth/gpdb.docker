@@ -18,6 +18,7 @@ gpgcheck        = 0\
     yum install -y --enablerepo=base-debuginfo,epel-debuginfo \
         atop \
         audit-debuginfo \
+        bcc-tools \
         bpftrace \
         bzip2-debuginfo \
         ccache \
