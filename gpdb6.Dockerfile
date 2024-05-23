@@ -35,6 +35,7 @@ gpgcheck        = 0\
         glibc-debuginfo \
         gmp-devel \
         golang \
+        graphviz \
         htop \
         keyutils-debuginfo \
         krb5-debuginfo \
