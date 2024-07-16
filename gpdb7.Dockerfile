@@ -13,7 +13,7 @@ gpgcheck        = 0\
     echo -e "\
 [centos-sclo-rh] \n\
 name            = CentOS-7 - SCLo rh \n\
-baseurl         = http://mirror.centos.org/centos/7/sclo/x86_64/rh/ \n\
+baseurl         = https://mirror.axelname.ru/centos/7/sclo/\$basearch/rh/ \n\
 enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/centos-sclo-rh.repo; \
@@ -29,6 +29,7 @@ gpgcheck        = 0\
         llvm-toolset-11.0-clang \
         llvm-toolset-11.0-clang-tools-extra \
         mc \
+        ninja-build \
         parallel \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
