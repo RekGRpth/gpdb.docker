@@ -10,11 +10,21 @@ baseurl         = https://buildlogs.centos.org/c7-llvm-toolset-11.0.x86_64/ \n\
 enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/llvmtoolset-build.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=os\&infra=\$infra|baseurl=https://mirror.axelname.ru/centos/\$releasever/os/\$basearch|g" /etc/yum.repos.d/CentOS-Base.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=updates\&infra=\$infra|baseurl=https://mirror.axelname.ru/centos/\$releasever/updates/\$basearch|g" /etc/yum.repos.d/CentOS-Base.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=extras\&infra=\$infra|baseurl=https://mirror.axelname.ru/centos/\$releasever/extras/\$basearch|g" /etc/yum.repos.d/CentOS-Base.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org?arch=\$basearch\&release=7\&repo=sclo-rh|baseurl=https://mirror.axelname.ru/centos/\$releasever/sclo/\$basearch/rh/|g" /etc/yum.repos.d/CentOS-SCLo-scl-rh.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org?arch=\$basearch\&release=7\&repo=sclo-sclo|baseurl=https://mirror.axelname.ru/centos/\$releasever/sclo/\$basearch/sclo/|g" /etc/yum.repos.d/CentOS-SCLo-scl.repo; \
+    sed -i "s|metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-7\&arch=\$basearch|baseurl=https://mirror.yandex.ru/epel/\$releasever/\$basearch|g" /etc/yum.repos.d/epel.repo; \
 #    curl https://repos.baslab.org/rhel/7/bpftools/bpftools.repo --output /etc/yum.repos.d/bpftools.repo; \
     yum install -y https://packages.endpointdev.com/rhel/7/main/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y \
         centos-release-openstack-train \
     ; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=cloud-openstack-train|baseurl=https://mirror.axelname.ru/centos/\$releasever/cloud/\$basearch/openstack-train/|g" /etc/yum.repos.d/CentOS-OpenStack-train.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=storage-ceph-nautilus|baseurl=https://mirror.axelname.ru/centos/\$releasever/storage/\$basearch/ceph-nautilus/|g" /etc/yum.repos.d/CentOS-Ceph-Nautilus.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org?arch=\$basearch\&release=\$releasever\&repo=storage-nfs-ganesha-28|baseurl=https://mirror.axelname.ru/centos/\$releasever/storage/\$basearch/nfs-ganesha-28/|g" /etc/yum.repos.d/CentOS-NFS-Ganesha-28.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=virt-kvm-common|baseurl=https://mirror.axelname.ru/centos/\$releasever/virt/\$basearch/kvm-common/|g" /etc/yum.repos.d/CentOS-QEMU-EV.repo; \
     yum install -y --enablerepo=base-debuginfo,epel-debuginfo \
         atop \
         audit-debuginfo \
