@@ -15,8 +15,9 @@ gpgcheck        = 0\
     sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=extras\&infra=\$infra|baseurl=https://mirror.axelname.ru/centos/\$releasever/extras/\$basearch|g" /etc/yum.repos.d/CentOS-Base.repo; \
     sed -i "s|mirrorlist=http://mirrorlist.centos.org?arch=\$basearch\&release=7\&repo=sclo-rh|baseurl=https://mirror.axelname.ru/centos/\$releasever/sclo/\$basearch/rh/|g" /etc/yum.repos.d/CentOS-SCLo-scl-rh.repo; \
     sed -i "s|mirrorlist=http://mirrorlist.centos.org?arch=\$basearch\&release=7\&repo=sclo-sclo|baseurl=https://mirror.axelname.ru/centos/\$releasever/sclo/\$basearch/sclo/|g" /etc/yum.repos.d/CentOS-SCLo-scl.repo; \
-    sed -i "s|metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-7\&arch=\$basearch|baseurl=https://mirror.yandex.ru/epel/\$releasever/\$basearch|g" /etc/yum.repos.d/epel.repo; \
-    yum-config-manager --save --setopt=epel.skip_if_unavailable=true; \
+    sed -i "s|metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-7\&arch=\$basearch|baseurl=https://archives.fedoraproject.org/pub/archive/epel/\$releasever/\$basearch/|g" /etc/yum.repos.d/epel.repo; \
+    sed -i "s|baseurl=https://mirror.yandex.ru/epel/\$releasever/\$basearch|baseurl=https://archives.fedoraproject.org/pub/archive/epel/\$releasever/\$basearch/|g" /etc/yum.repos.d/epel.repo; \
+#    yum-config-manager --save --setopt=epel.skip_if_unavailable=true; \
 #    curl https://repos.baslab.org/rhel/7/bpftools/bpftools.repo --output /etc/yum.repos.d/bpftools.repo; \
     yum install -y https://packages.endpointdev.com/rhel/7/main/x86_64/endpoint-repo.x86_64.rpm; \
     yum install -y \
