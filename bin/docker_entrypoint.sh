@@ -23,5 +23,6 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     echo "  UseRoaming no" >> "$HOME/.ssh/config"
 fi
 sudo cp -r /usr/local.parent/* /usr/local/
+sudo chown -R "$USER":"$GROUP" /usr/local
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 exec "$@"
