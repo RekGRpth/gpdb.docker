@@ -23,10 +23,10 @@ gpgcheck        = 0\
     yum install -y \
         centos-release-openstack-train \
     ; \
-    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=cloud-openstack-train|baseurl=https://mirror.axelname.ru/centos/\$releasever/cloud/\$basearch/openstack-train/|g" /etc/yum.repos.d/CentOS-OpenStack-train.repo; \
-    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=storage-ceph-nautilus|baseurl=https://mirror.axelname.ru/centos/\$releasever/storage/\$basearch/ceph-nautilus/|g" /etc/yum.repos.d/CentOS-Ceph-Nautilus.repo; \
-    sed -i "s|mirrorlist=http://mirrorlist.centos.org?arch=\$basearch\&release=\$releasever\&repo=storage-nfs-ganesha-28|baseurl=https://mirror.axelname.ru/centos/\$releasever/storage/\$basearch/nfs-ganesha-28/|g" /etc/yum.repos.d/CentOS-NFS-Ganesha-28.repo; \
-    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=virt-kvm-common|baseurl=https://mirror.axelname.ru/centos/\$releasever/virt/\$basearch/kvm-common/|g" /etc/yum.repos.d/CentOS-QEMU-EV.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=cloud-openstack-train|baseurl=https://vault.centos.org/centos/\$releasever/cloud/\$basearch/openstack-train/|g" /etc/yum.repos.d/CentOS-OpenStack-train.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=storage-ceph-nautilus|baseurl=https://vault.centos.org/centos/\$releasever/storage/\$basearch/ceph-nautilus/|g" /etc/yum.repos.d/CentOS-Ceph-Nautilus.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org?arch=\$basearch\&release=\$releasever\&repo=storage-nfs-ganesha-28|baseurl=https://vault.centos.org/centos/\$releasever/storage/\$basearch/nfs-ganesha-28/|g" /etc/yum.repos.d/CentOS-NFS-Ganesha-28.repo; \
+    sed -i "s|mirrorlist=http://mirrorlist.centos.org/?release=\$releasever\&arch=\$basearch\&repo=virt-kvm-common|baseurl=https://vault.centos.org/centos/\$releasever/virt/\$basearch/kvm-common/|g" /etc/yum.repos.d/CentOS-QEMU-EV.repo; \
     yum install -y --enablerepo=base-debuginfo,epel-debuginfo \
         atop \
         audit-debuginfo \
