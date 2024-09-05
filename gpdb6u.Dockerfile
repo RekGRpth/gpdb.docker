@@ -1,5 +1,5 @@
 ARG GP_MAJOR=6
-FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_u22:ADBDEV-4688-x86-64"
+FROM "hub.adsw.io/library/hub.adsw.io/library/gpdb${GP_MAJOR}_u22:latest"
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
