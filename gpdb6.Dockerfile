@@ -5,7 +5,11 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     apt install -y \
         htop \
+        lcov \
+        libyaml-perl \
         mc \
+        meson \
+        ninja-build \
         protobuf-c-compiler \
         protobuf-compiler \
         psmisc \

@@ -13,7 +13,7 @@ gpgcheck        = 0\
     echo -e "\
 [centos-sclo-rh] \n\
 name            = CentOS-7 - SCLo rh \n\
-baseurl         = https://mirror.axelname.ru/centos/7/sclo/\$basearch/rh/ \n\
+baseurl         = http://mirror.adsw.io/sc-lo/7/rh/\$basearch/ \n\
 enabled         = 1 \n\
 gpgcheck        = 0\
 " > /etc/yum.repos.d/centos-sclo-rh.repo; \
