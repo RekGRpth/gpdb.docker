@@ -3,6 +3,7 @@ FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_u22:latest"
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
+    apt update; \
     apt install -y \
         htop \
         lcov \
