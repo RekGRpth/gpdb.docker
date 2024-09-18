@@ -2,6 +2,7 @@
 
 export GP_MAJOR=6
 
+docker pull "hub.adsw.io/library/gpdb${GP_MAJOR}_u22:latest"
 docker build \
     --build-arg GP_MAJOR=$GP_MAJOR \
     --file "gpdb${GP_MAJOR}u.Dockerfile" \
