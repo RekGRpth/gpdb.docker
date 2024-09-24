@@ -7,6 +7,8 @@ RUN set -eux; \
     apt install -y \
         htop \
         lcov \
+        liblz4-dev \
+        libssh2-1-dev \
         libyaml-perl \
         mc \
         meson \
