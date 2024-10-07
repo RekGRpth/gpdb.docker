@@ -5,6 +5,7 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     apt update; \
     apt install -y \
+        gdb \
         htop \
         lcov \
         liblz4-dev \
