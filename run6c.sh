@@ -21,7 +21,6 @@ docker run \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.local/${GP_MAJOR}c",destination=/usr/local \
     --mount type=bind,source="/tmpfs/data/$GP_MAJOR",destination="/home/gpadmin/.data/$GP_MAJOR" \
     --mount type=bind,source="/tmpfs/data/$GP_MAJOR.test",destination="/home/gpadmin/gpdb_src/src/test" \
-    --mount type=tmpfs,destination=/tmp \
     --mount type=volume,source=gpdb,destination=/home/gpadmin \
     --name "gpdb${GP_MAJOR}c" \
     --network name=docker \
