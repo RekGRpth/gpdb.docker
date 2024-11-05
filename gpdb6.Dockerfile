@@ -11,6 +11,7 @@ RUN set -eux; \
         lcov \
         liblz4-dev \
         libssh2-1-dev \
+        libxml2-utils \
         libyaml-perl \
         mc \
         meson \
