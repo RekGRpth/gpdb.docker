@@ -1,5 +1,4 @@
-ARG GP_MAJOR=6
-FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
+FROM hub.adsw.io/library/gpdb6_regress:latest
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \

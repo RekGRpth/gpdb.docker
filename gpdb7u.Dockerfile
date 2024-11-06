@@ -1,42 +1,29 @@
-ARG GP_MAJOR=7
-FROM "hub.adsw.io/library/gpdb${GP_MAJOR}_regress:latest"
+FROM hub.adsw.io/library/gpdb7_u22:latest
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
-    echo -e "\
-[llvmtoolset-build] \n\
-name            = LLVM Toolset 11.0 - Build \n\
-baseurl         = https://buildlogs.centos.org/c7-llvm-toolset-11.0.x86_64/ \n\
-enabled         = 1 \n\
-gpgcheck        = 0\
-" > /etc/yum.repos.d/llvmtoolset-build.repo; \
-    echo -e "\
-[centos-sclo-rh] \n\
-name            = CentOS-7 - SCLo rh \n\
-baseurl         = http://mirror.adsw.io/sc-lo/7/rh/\$basearch/ \n\
-enabled         = 1 \n\
-gpgcheck        = 0\
-" > /etc/yum.repos.d/centos-sclo-rh.repo; \
-    yum remove -y compiler-rt; \
-    yum install -y https://packages.endpointdev.com/rhel/8/main/x86_64/endpoint-repo.noarch.rpm; \
-    yum install -y \
-        ccache \
+    apt update; \
+    apt install -y \
+        clang-format-13 \
         gdb \
-        git \
-        glibc-locale-source \
-        golang \
         htop \
-        llvm-toolset-11.0-clang \
-        llvm-toolset-11.0-clang-tools-extra \
+        lcov \
+        liblz4-dev \
+        libssh2-1-dev \
+        libxml2-utils \
+        libxslt-dev \
+        libyaml-perl \
         mc \
+        meson \
         ninja-build \
-        parallel \
+        protobuf-c-compiler \
         protobuf-compiler \
+        psmisc \
         python3-protobuf \
+        sudo \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
     localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \
-    yum clean all; \
     echo done
 
 ENTRYPOINT [ "docker_entrypoint.sh" ]
@@ -61,8 +48,12 @@ RUN set -eux; \
     echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" >>/etc/sudoers; \
     echo '"\e[A": history-search-backward' >>/etc/inputrc; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
-    mv /usr/local /usr/local.parent; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
+    sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
+    wget https://go.dev/dl/go1.21.3.linux-amd64.tar.gz; \
+    tar -C /usr/local -xzf go1.21.3.linux-amd64.tar.gz; \
+    rm go1.21.3.linux-amd64.tar.gz; \
+    mv /usr/local /usr/local.parent; \
     echo done
 
 USER "$USER"
