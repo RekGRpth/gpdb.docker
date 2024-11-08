@@ -4,7 +4,9 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     apt update; \
     apt install -y \
+        ccache \
         clang-format-13 \
+        elfutils \
         gdb \
         htop \
         lcov \

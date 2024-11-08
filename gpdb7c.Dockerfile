@@ -20,6 +20,7 @@ gpgcheck        = 0\
     yum install -y https://packages.endpointdev.com/rhel/8/main/x86_64/endpoint-repo.noarch.rpm; \
     yum install -y \
         ccache \
+        elfutils \
         gdb \
         git \
         glibc-locale-source \
