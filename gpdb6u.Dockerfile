@@ -6,6 +6,7 @@ RUN set -eux; \
     apt install -y \
         ccache \
         clang-format-13 \
+        delve \
         elfutils \
         gdb \
         htop \
