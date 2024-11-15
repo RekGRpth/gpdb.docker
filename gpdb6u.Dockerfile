@@ -10,7 +10,6 @@ RUN set -eux; \
         delve \
         elfutils \
         gdb \
-        ginkgo \
         htop \
         lcov \
         liblz4-dev \
