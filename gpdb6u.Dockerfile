@@ -18,6 +18,7 @@ RUN set -eux; \
         mc \
         meson \
         ninja-build \
+        parallel \
         protobuf-c-compiler \
         protobuf-compiler \
         psmisc \
