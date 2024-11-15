@@ -5,6 +5,7 @@ RUN set -eux; \
     apt update; \
     apt install -y \
         ccache \
+        clang-format-11 \
         clang-format-13 \
         delve \
         elfutils \
