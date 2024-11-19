@@ -3,6 +3,6 @@
 docker build \
     --build-arg GP_MAJOR=7u \
     --file gpdb7u.Dockerfile \
+    --pull \
     --tag gpdb7u \
     . 2>&1 | tee build7u.log
-#    --pull \
