@@ -115,10 +115,10 @@ RUN set -eux; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
-    wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh; \
+    wget -q https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh; \
     sh cmake-*-linux-x86_64.sh --skip-license --prefix=/usr/local; \
     rm cmake-*-linux-x86_64.sh; \
-    wget https://go.dev/dl/go1.21.3.linux-amd64.tar.gz; \
+    wget -q https://go.dev/dl/go1.21.3.linux-amd64.tar.gz; \
 #    rm -rf /usr/local/go; \
     tar -C /usr/local -xzf go1.21.3.linux-amd64.tar.gz; \
     rm go1.21.3.linux-amd64.tar.gz; \
