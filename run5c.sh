@@ -7,6 +7,7 @@ docker rm gpdb5c || echo $?
 mkdir -p /tmpfs/data/5c /tmpfs/data/5c.test
 docker run \
     --detach \
+    --env GOPATH=/usr/local/go \
     --env GP_MAJOR=5c \
     --env GROUP_ID="$(id -g)" \
     --env LANG=ru_RU.UTF-8 \

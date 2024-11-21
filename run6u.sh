@@ -7,6 +7,7 @@ docker rm gpdb6u || echo $?
 mkdir -p /tmpfs/data/6u /tmpfs/data/6u.test
 docker run \
     --detach \
+    --env GOPATH=/usr/local/go \
     --env GP_MAJOR=6u \
     --env GROUP_ID="$(id -g)" \
     --env LANG=ru_RU.UTF-8 \
