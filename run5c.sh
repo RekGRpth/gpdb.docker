@@ -11,6 +11,7 @@ docker run \
     --env GROUP_ID="$(id -g)" \
     --env LANG=ru_RU.UTF-8 \
     --env PGPORT=5000 \
+    --env PORT_BASE=5000 \
     --env TZ=Asia/Yekaterinburg \
     --env USER_ID="$(id -u)" \
     --hostname gpdb5c \
