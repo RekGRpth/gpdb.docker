@@ -20,10 +20,7 @@ RUN set -eux; \
         meson \
         ninja-build \
         parallel \
-        protobuf-c-compiler \
-        protobuf-compiler \
         psmisc \
-        python3-protobuf \
         sudo \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \

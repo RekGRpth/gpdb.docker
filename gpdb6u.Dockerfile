@@ -19,13 +19,9 @@ RUN set -eux; \
         meson \
         ninja-build \
         parallel \
-        protobuf-c-compiler \
-        protobuf-compiler \
         psmisc \
-        python3-protobuf \
         sudo \
     ; \
-    /opt/adb6-python3.9/bin/python3 -m pip install protobuf==3.20.0; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
     localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \
     echo done
