@@ -4,6 +4,7 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     apt update; \
     apt install -y \
+        autoconf \
         ccache \
         clang-format-11 \
         clang-format-13 \
@@ -13,6 +14,7 @@ RUN set -eux; \
         lcov \
         liblz4-dev \
         libssh2-1-dev \
+        libtool \
         libxml2-utils \
         libxslt-dev \
         libyaml-perl \
