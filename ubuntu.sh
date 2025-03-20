@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+docker pull hub.adsw.io/library/docker:20.10.17-x64
 docker network create --attachable --ipv6 --subnet 2001:db8::/112 --opt com.docker.network.bridge.name=docker docker || echo $?
 docker volume create gpdb
 docker stop ubuntu || echo $?
@@ -12,6 +13,5 @@ docker run \
     --name ubuntu \
     --network name=docker \
     --privileged \
-    --pull always \
     --restart always \
     hub.adsw.io/library/docker:20.10.17-x64 sleep infinity
