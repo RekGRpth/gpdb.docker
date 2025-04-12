@@ -22,6 +22,7 @@ RUN set -eux; \
         meson \
         ninja-build \
         parallel \
+        pcregrep \
         psmisc \
         sudo \
     ; \
