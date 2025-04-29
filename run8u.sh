@@ -11,8 +11,8 @@ docker run \
     --env GP_MAJOR=8u \
     --env GROUP_ID="$(id -g)" \
     --env LANG=ru_RU.UTF-8 \
-    --env PGPORT=7000 \
-    --env PORT_BASE=7000 \
+    --env PGPORT=8000 \
+    --env PORT_BASE=8000 \
     --env TZ=Asia/Yekaterinburg \
     --env USER_ID="$(id -u)" \
     --hostname gpdb8u \
