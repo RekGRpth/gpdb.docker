@@ -1,4 +1,4 @@
-FROM hub.adsw.io/library/gpdb7_u22:latest
+FROM hub.adsw.io/library/gpdb8_u22:latest
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
