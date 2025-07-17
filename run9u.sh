@@ -11,8 +11,8 @@ docker run \
     --env GP_MAJOR=9u \
     --env GROUP_ID="$(id -g)" \
     --env LANG=ru_RU.UTF-8 \
-    --env PGPORT=8000 \
-    --env PORT_BASE=8000 \
+    --env PGPORT=9000 \
+    --env PORT_BASE=9000 \
     --env TZ=Asia/Yekaterinburg \
     --env USER_ID="$(id -u)" \
     --hostname qpdb9u \
