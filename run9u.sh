@@ -2,8 +2,8 @@
 
 docker network create --attachable --ipv6 --subnet 2001:db8::/112 --opt com.docker.network.bridge.name=docker docker || echo $?
 docker volume create gpdb
-docker stop qpdb9u || echo $?
-docker rm qpdb9u || echo $?
+docker stop gpdb9u || echo $?
+docker rm gpdb9u || echo $?
 mkdir -p /tmpfs/data/9u /tmpfs/data/9u.test
 docker run \
     --detach \
@@ -15,7 +15,7 @@ docker run \
     --env PORT_BASE=9000 \
     --env TZ=Asia/Yekaterinburg \
     --env USER_ID="$(id -u)" \
-    --hostname qpdb9u \
+    --hostname gpdb9u \
     --init \
     --memory=16g \
     --memory-swap=16g \
@@ -23,10 +23,10 @@ docker run \
     --mount type=bind,source=/tmpfs/data/9u,destination=/home/gpadmin/.data \
     --mount type=bind,source=/tmpfs/data/9u.test,destination=/home/gpadmin/gpdb_src/src/test \
     --mount type=volume,source=gpdb,destination=/home/gpadmin \
-    --name qpdb9u \
+    --name gpdb9u \
     --network name=docker \
     --privileged \
     --restart always \
     --sysctl "kernel.sem=500 1024000 200 4096" \
     --sysctl "net.unix.max_dgram_qlen=4096" \
-    qpdb9u sudo /usr/sbin/sshd -De
+    gpdb9u sudo /usr/sbin/sshd -De
