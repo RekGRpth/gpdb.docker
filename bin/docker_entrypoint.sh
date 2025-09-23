@@ -22,6 +22,9 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     echo "Host *" >> "$HOME/.ssh/config"
     echo "  UseRoaming no" >> "$HOME/.ssh/config"
 fi
+if [ -d /opt/adb6-python3.9 ]; then
+    sudo chown -R "$USER":"$GROUP" /opt/adb6-python3.9
+fi
 sudo cp -r /usr/local.parent/* /usr/local/
 sudo chown -R "$USER":"$GROUP" /usr/local
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
