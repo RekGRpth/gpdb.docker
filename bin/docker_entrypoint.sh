@@ -4,12 +4,14 @@ if [ -n "$GROUP" ] && [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "$(id -g "$GROUP")"
     test -n "$USER" && sudo usermod --home /tmp "$USER"
     sudo groupmod --gid "$GROUP_ID" "$GROUP"
     sudo chgrp "$GROUP_ID" "$HOME"
+    sudo chgrp "$GROUP_ID" /usr/local
     test -n "$USER" && sudo usermod --home "$HOME" "$USER"
 fi
 if [ -n "$USER" ] && [ -n "$USER_ID" ] && [ "$USER_ID" != "$(id -u "$USER")" ]; then
     sudo usermod --home /tmp "$USER"
     sudo usermod --uid "$USER_ID" "$USER"
     sudo chown "$USER_ID" "$HOME"
+    sudo chown "$USER_ID" /usr/local
     sudo usermod --home "$HOME" "$USER"
 fi
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
@@ -22,10 +24,5 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     echo "Host *" >> "$HOME/.ssh/config"
     echo "  UseRoaming no" >> "$HOME/.ssh/config"
 fi
-if [ -d /opt/adb6-python3.9 ]; then
-    sudo chown -R "$USER":"$GROUP" /opt/adb6-python3.9
-fi
-sudo cp -r /usr/local.parent/* /usr/local/
-sudo chown -R "$USER":"$GROUP" /usr/local
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 exec "$@"

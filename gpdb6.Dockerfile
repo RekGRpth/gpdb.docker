@@ -1,4 +1,4 @@
-FROM hub.adsw.io/library/gpdb6_u22:latest
+FROM greengagedb/ggdb6_ubuntu:testing
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
@@ -23,7 +23,6 @@ RUN set -eux; \
         psmisc \
         sudo \
     ; \
-    ln -fs python3 /opt/adb6-python3.9/bin/python; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
     localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \
     echo done
@@ -52,10 +51,9 @@ RUN set -eux; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
-    wget -q https://go.dev/dl/go1.21.3.linux-amd64.tar.gz; \
-    tar -C /usr/local -xzf go1.21.3.linux-amd64.tar.gz; \
-    rm go1.21.3.linux-amd64.tar.gz; \
-    mv /usr/local /usr/local.parent; \
+    wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz -q -O - | tar -C /usr/local -xz; \
+    tar -xzf "$HOME/bin_gpdb/bin_gpdb.tar.gz" -C /usr/local; \
+    chown -R "$USER":"$GROUP" /usr/local; \
     echo done
 
 USER "$USER"
