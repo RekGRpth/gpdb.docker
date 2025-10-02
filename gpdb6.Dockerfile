@@ -1,4 +1,4 @@
-FROM greengagedb/ggdb6_ubuntu:testing
+FROM ghcr.io/greengagedb/greengage/ggdb6_ubuntu:latest
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
