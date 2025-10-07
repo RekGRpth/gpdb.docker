@@ -34,6 +34,7 @@ ADD bin /usr/local/bin
 ENV PREFIX=/usr/local
 
 ENV BINDIR="$PREFIX/bin"
+ENV CONFIGURE_FLAGS=
 ENV GPHOME="$PREFIX"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
