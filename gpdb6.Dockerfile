@@ -34,10 +34,14 @@ ADD bin /usr/local/bin
 ENV PREFIX=/usr/local
 
 ENV BINDIR="$PREFIX/bin"
+ENV CMAKE_C_COMPILER_LAUNCHER=ccache
+ENV CMAKE_CXX_COMPILER_LAUNCHER=ccache
 ENV CONFIGURE_FLAGS=
+ENV GOPATH="$PREFIX/go"
 ENV GPHOME="$PREFIX"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
+ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:$PREFIX/madlib/bin"
 ENV USER=gpadmin
 
 RUN set -eux; \

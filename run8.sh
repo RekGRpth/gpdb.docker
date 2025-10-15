@@ -7,7 +7,6 @@ docker rm gpdb8 || echo $?
 mkdir -p /tmpfs/data/8 /tmpfs/data/8.test
 docker run \
     --detach \
-    --env GOPATH=/usr/local/go \
     --env GP_MAJOR=8 \
     --env GROUP_ID="$(id -g)" \
     --env LANG=ru_RU.UTF-8 \
