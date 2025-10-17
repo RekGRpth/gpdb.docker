@@ -1,19 +1,25 @@
 FROM ghcr.io/greengagedb/greengage/ggdb6_ubuntu:latest
 
+SHELL [ "/bin/bash", "-c" ]
+
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     apt update; \
     apt install -y \
+        autoconf \
         ccache \
         clang-format-11 \
         clang-format-13 \
         elfutils \
         gdb \
+        golang-1.21 \
         htop \
         lcov \
         liblz4-dev \
         libssh2-1-dev \
+        libtool \
         libxml2-utils \
+        libxslt-dev \
         libyaml-perl \
         mc \
         meson \
@@ -42,11 +48,14 @@ ENV GOPATH="$PREFIX/go"
 ENV GPHOME="$PREFIX"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
-ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:$PREFIX/madlib/bin"
+ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:/usr/lib/go-1.21/bin:$PREFIX/madlib/bin"
 ENV USER=gpadmin
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
+    ln -fs /usr/local /usr/local/greengage-db-devel; \
+    source gpdb_src/concourse/scripts/common.bash; \
+    install_gpdb; \
     groupadd --system --gid 1000 "$GROUP"; \
     useradd --system --uid 1000 --home "$HOME" --shell /bin/bash --gid "$GROUP" "$USER"; \
     usermod -p '*' "$USER"; \
@@ -57,8 +66,6 @@ RUN set -eux; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
-    wget https://golang.org/dl/go1.21.0.linux-amd64.tar.gz -q -O - | tar -C /usr/local -xz; \
-    tar -xzf "$HOME/bin_gpdb/bin_gpdb.tar.gz" -C /usr/local; \
     chown -R "$USER":"$GROUP" /usr/local; \
     echo done
 
