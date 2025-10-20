@@ -45,7 +45,7 @@ ENV CMAKE_C_COMPILER_LAUNCHER=ccache
 ENV CMAKE_CXX_COMPILER_LAUNCHER=ccache
 ENV CONFIGURE_FLAGS=
 ENV GOPATH="$PREFIX/go"
-ENV GPHOME="$PREFIX"
+ENV GPHOME="$PREFIX/greenplum-db-devel"
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
 ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:/usr/lib/go-1.21/bin:$PREFIX/madlib/bin"
@@ -53,7 +53,6 @@ ENV USER=gpadmin
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
-    ln -fs /usr/local /usr/local/greengage-db-devel; \
     source gpdb_src/concourse/scripts/common.bash; \
     install_gpdb; \
     groupadd --system --gid 1000 "$GROUP"; \
