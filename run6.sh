@@ -4,7 +4,6 @@ docker network create --attachable --ipv6 --subnet 2001:db8::/112 --opt com.dock
 docker volume create gpdb
 docker stop gpdb6 || echo $?
 docker rm gpdb6 || echo $?
-mkdir -p /tmpfs/data/6 /tmpfs/data/6.test
 mkdir -p "$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.ccache/6"
 mkdir -p "$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/gpAdminLogs/6"
 docker run \
@@ -21,8 +20,8 @@ docker run \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.ccache/6",destination=/home/gpadmin/.ccache \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/gpAdminLogs/6",destination=/home/gpadmin/gpAdminLogs \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/src/gpdb6",destination=/home/gpadmin/gpdb_src \
+    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/src/gpdb6/src/test",destination=/home/gpadmin/gpdb_src/src/test \
     --mount type=bind,source=/tmpfs/data/6,destination=/home/gpadmin/.data \
-    --mount type=bind,source=/tmpfs/data/6.test,destination=/home/gpadmin/gpdb_src/src/test \
     --mount type=volume,source=gpdb,destination=/home/gpadmin \
     --name gpdb6 \
     --network name=docker \
