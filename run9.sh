@@ -6,6 +6,7 @@ docker stop gpdb9 || echo $?
 docker rm gpdb9 || echo $?
 mkdir -p /tmpfs/data/9 /tmpfs/data/9.test
 mkdir -p "$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.ccache/9"
+mkdir -p "$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/gpAdminLogs/9"
 docker run \
     --detach \
     --env GP_MAJOR=9 \
@@ -20,6 +21,7 @@ docker run \
     --memory=16g \
     --memory-swap=16g \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.ccache/9",destination=/home/gpadmin/.ccache \
+    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/gpAdminLogs/9",destination=/home/gpadmin/gpAdminLogs \
     --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/src/gpdb9",destination=/home/gpadmin/gpdb_src \
     --mount type=bind,source=/tmpfs/data/9,destination=/home/gpadmin/.data \
     --mount type=bind,source=/tmpfs/data/9.test,destination=/home/gpadmin/gpdb_src/src/test \
