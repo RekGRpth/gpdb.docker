@@ -2,29 +2,27 @@
 
 docker network create --attachable --ipv6 --subnet 2001:db8::/112 --opt com.docker.network.bridge.name=docker docker || echo $?
 docker volume create gpdb
-docker stop gpdb9 || echo $?
-docker rm gpdb9 || echo $?
-mkdir -p "$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.ccache/9"
-mkdir -p "$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/gpAdminLogs/9"
+export GPDB="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)"
+export GP_MAJOR=9
+docker stop "gpdb$GP_MAJOR" || echo $?
+docker rm "gpdb$GP_MAJOR" || echo $?
+mkdir -p "$GPDB/.ccache/$GP_MAJOR"
+mkdir -p "$GPDB/gpAdminLogs/$GP_MAJOR"
 docker run \
     --detach \
-    --env GP_MAJOR=9 \
     --env GROUP_ID="$(id -g)" \
-    --env LANG=ru_RU.UTF-8 \
-    --env PGPORT=9000 \
-    --env PORT_BASE=9000 \
     --env USER_ID="$(id -u)" \
-    --hostname gpdb9 \
+    --hostname "gpdb$GP_MAJOR" \
     --init \
     --memory=16g \
     --memory-swap=16g \
-    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/.ccache/9",destination=/home/gpadmin/.ccache \
-    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/gpAdminLogs/9",destination=/home/gpadmin/gpAdminLogs \
-    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/src/gpdb9",destination=/home/gpadmin/gpdb_src \
-    --mount type=bind,source="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)/src/gpdb9/src/test",destination=/home/gpadmin/gpdb_src/src/test \
-    --mount type=bind,source=/tmpfs/data/9,destination=/home/gpadmin/.data \
+    --mount type=bind,source="$GPDB/.ccache/$GP_MAJOR",destination=/home/gpadmin/.ccache \
+    --mount type=bind,source="$GPDB/gpAdminLogs/$GP_MAJOR",destination=/home/gpadmin/gpAdminLogs \
+    --mount type=bind,source="$GPDB/src/gpdb$GP_MAJOR",destination=/home/gpadmin/gpdb_src \
+    --mount type=bind,source="$GPDB/src/gpdb$GP_MAJOR/src/test",destination=/home/gpadmin/gpdb_src/src/test \
+    --mount type=bind,source="/tmpfs/data/$GP_MAJOR",destination=/home/gpadmin/.data \
     --mount type=volume,source=gpdb,destination=/home/gpadmin \
-    --name gpdb9 \
+    --name "gpdb$GP_MAJOR" \
     --network name=docker \
     --privileged \
     --restart always \

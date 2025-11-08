@@ -1,9 +1,9 @@
 #!/bin/sh -eux
 
+export GP_MAJOR=8
 docker build \
-    --build-arg GP_MAJOR=8 \
-    --file gpdb8.Dockerfile \
+    --file "gpdb$GP_MAJOR.Dockerfile" \
     --pull \
     --network=host \
-    --tag gpdb8 \
-    . 2>&1 | tee build8.log
+    --tag "gpdb$GP_MAJOR" \
+    . 2>&1 | tee "build$GP_MAJOR.log"

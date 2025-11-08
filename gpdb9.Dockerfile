@@ -46,10 +46,21 @@ ENV CMAKE_CXX_COMPILER_LAUNCHER=ccache
 ENV CONFIGURE_FLAGS=
 ENV GOPATH="$PREFIX/go"
 ENV GPHOME="$PREFIX/greenplum-db-devel"
+ENV GP_MAJOR=9
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
+ENV LANG=ru_RU.UTF-8
+ENV NUM_PRIMARY_MIRROR_PAIRS=3
 ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:/usr/lib/go-1.21/bin:$PREFIX/madlib/bin"
+ENV PGPORT="${GP_MAJOR}000"
+ENV PORT_BASE="$PGPORT"
+ENV PXF_BASE="$HOME/.pxf"
+ENV PXF_HOME=/usr/local/pxf
 ENV USER=gpadmin
+ENV WITH_MIRRORS=true
+ENV WITH_STANDBY=true
+
+ENV DATADIRS="$HOME/data/$GP_MAJOR"
 
 RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
