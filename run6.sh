@@ -11,7 +11,6 @@ docker run \
     --env GP_MAJOR=6 \
     --env GROUP_ID="$(id -g)" \
     --env LANG=ru_RU.UTF-8 \
-    --env TZ=Asia/Yekaterinburg \
     --env USER_ID="$(id -u)" \
     --hostname gpdb6 \
     --init \
