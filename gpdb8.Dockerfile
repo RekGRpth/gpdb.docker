@@ -24,6 +24,7 @@ RUN set -eux; \
         mc \
         meson \
         ninja-build \
+        openjdk-17-jdk \
         parallel \
         pcregrep \
         psmisc \
