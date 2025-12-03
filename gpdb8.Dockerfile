@@ -50,6 +50,7 @@ ENV GPHOME="$PREFIX/greenplum-db-devel"
 ENV GP_MAJOR=8
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV LANG=ru_RU.UTF-8
 ENV NUM_PRIMARY_MIRROR_PAIRS=3
 ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:/usr/lib/go-1.21/bin:$PREFIX/pxf/bin:$PREFIX/madlib/bin"
