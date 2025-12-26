@@ -12,7 +12,7 @@ RUN set -eux; \
         clang-format-13 \
         elfutils \
         gdb \
-        golang-1.21 \
+        golang-1.22 \
         htop \
         lcov \
         liblz4-dev \
@@ -53,7 +53,7 @@ ENV HOME=/home/gpadmin
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV LANG=ru_RU.UTF-8
 ENV NUM_PRIMARY_MIRROR_PAIRS=3
-ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:/usr/lib/go-1.21/bin:$PREFIX/pxf/bin:$PREFIX/madlib/bin"
+ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:/usr/lib/go-1.22/bin:$PREFIX/pxf/bin:$PREFIX/madlib/bin"
 ENV PGPORT="${GP_MAJOR}000"
 ENV PORT_BASE="$PGPORT"
 ENV PXF_BASE="$PREFIX/pxf"
