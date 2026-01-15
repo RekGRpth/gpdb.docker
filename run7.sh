@@ -28,4 +28,4 @@ docker run \
     --restart always \
     --sysctl "kernel.sem=500 1024000 200 4096" \
     --sysctl "net.unix.max_dgram_qlen=4096" \
-    gpdb7 sudo /usr/sbin/sshd -De
+    "gpdb$GP_MAJOR" sudo /usr/sbin/sshd -De
