@@ -37,7 +37,7 @@ RUN set -eux; \
 
 ENTRYPOINT [ "docker_entrypoint.sh" ]
 
-ADD bin /usr/local/bin
+ADD bin /usr/bin
 
 ENV PREFIX=/usr/local
 
@@ -71,14 +71,14 @@ RUN set -eux; \
     groupadd --system --gid 1000 "$GROUP"; \
     useradd --system --uid 1000 --home "$HOME" --shell /bin/bash --gid "$GROUP" "$USER"; \
     usermod -p '*' "$USER"; \
-    chmod +x /usr/local/bin/*.sh; \
+    chmod +x /usr/bin/*.sh; \
     chown -R "$USER":"$GROUP" "$HOME"; \
     echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" >>/etc/sudoers; \
     echo '"\e[A": history-search-backward' >>/etc/inputrc; \
     echo '"\e[B": history-search-forward' >>/etc/inputrc; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
-    chown -R "$USER":"$GROUP" /usr/local; \
+    mv /usr/local /usr/local.parent; \
     echo done
 
 USER "$USER"
