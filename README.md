@@ -59,8 +59,6 @@ cat <<'EOF' > ~/gpdb/.bashrc
 export DATADIRS="$HOME/.data"
 export COORDINATOR_DATA_DIRECTORY="$DATADIRS/qddir/demoDataDir-1"
 export MASTER_DATA_DIRECTORY="$DATADIRS/qddir/demoDataDir-1"
-test -f "$GPHOME/greenplum_path.sh" && source "$GPHOME/greenplum_path.sh"
-test -f "$GPHOME/greengage_path.sh" && source "$GPHOME/greengage_path.sh"
 EOF
 ```
 
@@ -76,8 +74,6 @@ And create the same `.bashrc` but without first export:
 cat <<'EOF' > ~/gpdb/.bashrc
 export COORDINATOR_DATA_DIRECTORY="$DATADIRS/qddir/demoDataDir-1"
 export MASTER_DATA_DIRECTORY="$DATADIRS/qddir/demoDataDir-1"
-test -f "$GPHOME/greenplum_path.sh" && source "$GPHOME/greenplum_path.sh"
-test -f "$GPHOME/greengage_path.sh" && source "$GPHOME/greengage_path.sh"
 EOF
 ```
 
