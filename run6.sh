@@ -11,19 +11,11 @@ mkdir -p "$GPDB/gpAdminLogs/$GP_MAJOR"
 for HOST in cdw sdw1 sdw2 sdw3; do
     docker stop "gpdb$GP_MAJOR.$HOST" || echo $?
     docker rm "gpdb$GP_MAJOR.$HOST" || echo $?
-    if [[ "$HOST" == "cdw" ]]; then
-        HOSTNAME="gpdb$GP_MAJOR.$HOST"
-        NETWORK_ALIAS="--network-alias $HOST"
-    else
-        HOSTNAME="$HOST"
-        NETWORK_ALIAS=""
-    fi
     docker run \
-        $NETWORK_ALIAS \
         --detach \
         --env GROUP_ID="$(id -g)" \
         --env USER_ID="$(id -u)" \
-        --hostname "$HOSTNAME" \
+        --hostname "$HOST" \
         --init \
         --memory=16g \
         --memory-swap=16g \
