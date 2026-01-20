@@ -8,7 +8,7 @@ mkdir -p "$GPDB/.ccache/$GP_MAJOR"
 rm -rf "$GPDB/.local/$GP_MAJOR"
 mkdir -p "$GPDB/.local/$GP_MAJOR"
 mkdir -p "$GPDB/gpAdminLogs/$GP_MAJOR"
-for HOST in cdw sdw1 sdw2 sdw3; do
+for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
     docker stop "gpdb$GP_MAJOR.$HOST" || echo $?
     docker rm "gpdb$GP_MAJOR.$HOST" || echo $?
     docker run \
