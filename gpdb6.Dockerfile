@@ -79,6 +79,8 @@ RUN set -eux; \
     echo 'PS1="\u@gpdb$GP_MAJOR.\h:\w\$ "' >>/etc/bash.bashrc; \
     echo 'test -f "$GPHOME/greengage_path.sh" && source "$GPHOME/greengage_path.sh"' >>/etc/bash.bashrc; \
     echo 'test -f "$GPHOME/greenplum_path.sh" && source "$GPHOME/greenplum_path.sh"' >>/etc/bash.bashrc; \
+    echo '* hard nofile 1048576' >>/etc/security/limits.conf; \
+    echo '* soft nofile 1048576' >>/etc/security/limits.conf; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
     mv /usr/local /usr/local.parent; \
