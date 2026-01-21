@@ -27,12 +27,10 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
         --mount type=bind,source="/tmpfs/data/$GP_MAJOR",destination=/home/gpadmin/.data \
         --mount type=volume,source=gpdb,destination=/home/gpadmin \
         --name "gpdb$GP_MAJOR.$HOST" \
-        --network-alias "$HOST" \
         --network "name=gpdb$GP_MAJOR" \
         --privileged \
         --restart always \
         --sysctl "kernel.sem=500 1024000 200 4096" \
         --sysctl "net.unix.max_dgram_qlen=4096" \
-        --ulimit nofile=65535 \
         "gpdb$GP_MAJOR" sudo /usr/sbin/sshd -De
 done
