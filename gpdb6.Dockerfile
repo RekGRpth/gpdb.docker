@@ -51,7 +51,7 @@ ENV GP_MAJOR=6
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-ENV LANG=ru_RU.UTF-8
+ENV LANG=en_US.UTF-8
 ENV NUM_PRIMARY_MIRROR_PAIRS=3
 ENV PATH="/usr/lib/ccache:$PATH:$GOPATH/bin:/usr/lib/go-1.22/bin:$PREFIX/pxf/bin:$PREFIX/madlib/bin"
 ENV PGPORT="${GP_MAJOR}000"
@@ -79,8 +79,8 @@ RUN set -eux; \
     echo 'PS1="\u@gpdb$GP_MAJOR.\h:\w\$ "' >>/etc/bash.bashrc; \
     echo 'test -f "$GPHOME/greengage_path.sh" && source "$GPHOME/greengage_path.sh"' >>/etc/bash.bashrc; \
     echo 'test -f "$GPHOME/greenplum_path.sh" && source "$GPHOME/greenplum_path.sh"' >>/etc/bash.bashrc; \
-    echo '* hard nofile 1048576' >>/etc/security/limits.conf; \
-    echo '* soft nofile 1048576' >>/etc/security/limits.conf; \
+    echo '* hard nofile 65535' >>/etc/security/limits.conf; \
+    echo '* soft nofile 65535' >>/etc/security/limits.conf; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
     mv /usr/local /usr/local.parent; \

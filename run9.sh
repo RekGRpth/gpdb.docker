@@ -8,7 +8,7 @@ mkdir -p "$GPDB/.ccache/$GP_MAJOR"
 #rm -rf "$GPDB/.local/$GP_MAJOR"
 mkdir -p "$GPDB/.local/$GP_MAJOR"
 mkdir -p "$GPDB/gpAdminLogs/$GP_MAJOR"
-for HOST in cdw sdw1 sdw2 sdw3; do
+for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
     docker stop "gpdb$GP_MAJOR.$HOST" || echo $?
     docker rm "gpdb$GP_MAJOR.$HOST" || echo $?
     docker run \
@@ -32,6 +32,7 @@ for HOST in cdw sdw1 sdw2 sdw3; do
         --restart always \
         --sysctl "kernel.sem=500 1024000 200 4096" \
         --sysctl "net.unix.max_dgram_qlen=4096" \
+        --ulimit nofile=65535 \
         "gpdb$GP_MAJOR" sudo /usr/sbin/sshd -De
     exit
 done
