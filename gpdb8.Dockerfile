@@ -81,7 +81,7 @@ RUN set -eux; \
     echo 'test -f "$GPHOME/greenplum_path.sh" && source "$GPHOME/greenplum_path.sh"' >>/etc/bash.bashrc; \
     echo '* hard nofile 65535' >>/etc/security/limits.conf; \
     echo '* soft nofile 65535' >>/etc/security/limits.conf; \
-    sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF*" /etc/ssh/sshd_config; \
+    sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF* SUSPEND_PG_REWIND" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
     mv /usr/local /usr/local.parent; \
     echo done
