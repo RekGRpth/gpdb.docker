@@ -19,7 +19,7 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     ssh-keygen -t rsa -N "" -f "$HOME/.ssh/id_rsa"
     cat "$HOME/.ssh/id_rsa.pub" > "$HOME/.ssh/authorized_keys"
     chmod 0600 "$HOME/.ssh/authorized_keys"
-    echo "SendEnv GP* PG* PXF*" > "$HOME/.ssh/config"
+    echo "SendEnv LANG LC_* GP* PG* PXF* SUSPEND_PG_REWIND" > "$HOME/.ssh/config"
     echo "StrictHostKeyChecking no" >> "$HOME/.ssh/config"
     echo "Host *" >> "$HOME/.ssh/config"
     echo "  UseRoaming no" >> "$HOME/.ssh/config"
