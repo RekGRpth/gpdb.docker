@@ -16,6 +16,12 @@ sudo chmod 755 /var/lib/docker/volumes
 
 Note: To make this persist after a restart, you need to add this in the autoload, e.g. to the `/etc/rc.local` file.
 
+- Add user to docker group
+
+```sh
+sudo addgroup <your_username> docker
+```
+
 - Create docker volume
 
 ```sh
