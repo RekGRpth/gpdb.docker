@@ -34,4 +34,5 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
         --sysctl "net.unix.max_dgram_qlen=4096" \
         --ulimit nofile=65535 \
         "gpdb$GP_MAJOR" sudo /usr/sbin/sshd -De
+    exit
 done
