@@ -5,6 +5,7 @@ docker network create --attachable --ipv6 --subnet "2001:db8:$GP_MAJOR:1::/112" 
 docker volume create gpdb
 export GPDB="$(docker volume inspect --format "{{ .Mountpoint }}" gpdb)"
 mkdir -p "$GPDB/.ccache/$GP_MAJOR"
+chmod -R 777 "$GPDB/.local/$GP_MAJOR"
 rm -rf "$GPDB/.local/$GP_MAJOR"
 mkdir -p "$GPDB/.local/$GP_MAJOR"
 mkdir -p "$GPDB/gpAdminLogs/$GP_MAJOR"
