@@ -1,4 +1,4 @@
-FROM hub.adsw.io/library/gpdb8_u22:latest
+FROM hub.adsw.io/library/gpdb8_u22:adb-8.x
 
 SHELL [ "/bin/bash", "-c" ]
 
