@@ -13,6 +13,7 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
     docker stop "gpdb$GP_MAJOR.$HOST" || echo $?
     docker rm "gpdb$GP_MAJOR.$HOST" || echo $?
     docker run \
+        --cgroupns=host \
         --detach \
         --env GROUP_ID="$(id -g)" \
         --env USER_ID="$(id -u)" \
@@ -26,6 +27,7 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
         --mount type=bind,source="$GPDB/src/gpdb$GP_MAJOR",destination=/home/gpadmin/gpdb_src \
         --mount type=bind,source="$GPDB/src/gpdb$GP_MAJOR/src/test",destination=/home/gpadmin/gpdb_src/src/test \
         --mount type=bind,source="/tmpfs/data/$GP_MAJOR",destination=/home/gpadmin/.data \
+        --mount type=bind,source=/sys/fs/cgroup,destination=/sys/fs/cgroup \
         --mount type=volume,source=gpdb,destination=/home/gpadmin \
         --name "gpdb$GP_MAJOR.$HOST" \
         --network "name=gpdb$GP_MAJOR" \
