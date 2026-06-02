@@ -1,4 +1,4 @@
-FROM ghcr.io/greengagedb/greengage/ggdb6_ubuntu:latest
+FROM ghcr.io/greengagedb/greengage/ggdb6_ubuntu24.04:latest
 
 SHELL [ "/bin/bash", "-c" ]
 
@@ -8,8 +8,8 @@ RUN set -eux; \
     apt install -y \
         autoconf \
         ccache \
-        clang-format-11 \
-        clang-format-13 \
+#        clang-format-11 \
+#        clang-format-13 \
         elfutils \
         gdb \
         golang-1.23 \
@@ -69,6 +69,8 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     source gpdb_src/concourse/scripts/common.bash; \
     install_gpdb; \
+    groupmod -g 1001 ubuntu; \
+    usermod -g 1001 -u 1001 ubuntu; \
     groupadd --system --gid 1000 "$GROUP"; \
     useradd --system --uid 1000 --home "$HOME" --shell /bin/bash --gid "$GROUP" "$USER"; \
     usermod -p '*' "$USER"; \
@@ -85,6 +87,7 @@ RUN set -eux; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF* SUSPEND_PG_REWIND" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
     mv /usr/local /usr/local.parent; \
+    ln -fs /usr/include/python3.12/cpython/longintrepr.h /usr/include/python3.12/; \
     echo done
 
 USER "$USER"
