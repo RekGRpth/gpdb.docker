@@ -1,4 +1,4 @@
-FROM hub.adsw.io/library/gpdb8_u22:adb-8.x
+FROM ghcr.io/greengagedb/greengage/ggdb8_ubuntu:latest
 
 SHELL [ "/bin/bash", "-c" ]
 
