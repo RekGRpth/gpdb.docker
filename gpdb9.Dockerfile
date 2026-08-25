@@ -13,7 +13,7 @@ RUN set -eux; \
         elfutils \
         gdb \
         gh \
-        golang-1.23 \
+        golang-1.24 \
         htop \
         jq \
         lcov \
