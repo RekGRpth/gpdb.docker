@@ -12,6 +12,7 @@ RUN set -eux; \
 #        clang-format-13 \
         elfutils \
         gdb \
+        gh \
         golang-1.23 \
         htop \
         jq \
