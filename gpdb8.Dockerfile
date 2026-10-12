@@ -17,6 +17,7 @@ RUN set -eux; \
         htop \
         jq \
         lcov \
+        libcap2-bin \
         liblz4-dev \
         libssh2-1-dev \
         libtool \
@@ -89,6 +90,10 @@ RUN set -eux; \
     echo '* soft nofile 65535' >>/etc/security/limits.conf; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF* SUSPEND_PG_REWIND" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
+    PERF="$(readlink -f "$(ls -1d /usr/lib/linux-tools/*/perf | sort -V | tail -1)")"; \
+    test -x "$PERF"; \
+    setcap cap_perfmon,cap_sys_ptrace+ep "$PERF"; \
+    ln -sf "$PERF" /usr/local/bin/perf; \
     mv /usr/local /usr/local.parent; \
     echo done
 
