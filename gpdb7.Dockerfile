@@ -23,6 +23,8 @@ RUN set -eux; \
         libxml2-utils \
         libxslt-dev \
         libyaml-perl \
+        linux-tools-common \
+        linux-tools-generic \
         mc \
         meson \
         ninja-build \
