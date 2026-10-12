@@ -13,6 +13,8 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
     docker stop "gpdb$GP_MAJOR.$HOST" || echo $?
     docker rm "gpdb$GP_MAJOR.$HOST" || echo $?
     docker run \
+        --cap-add PERFMON \
+        --cap-add SYS_PTRACE \
         --detach \
         --env GROUP_ID="$(id -g)" \
         --env USER_ID="$(id -u)" \
@@ -31,6 +33,7 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
         --network name=docker \
         --privileged \
         --restart always \
+        --security-opt seccomp=unconfined \
         --sysctl "kernel.sem=500 1024000 200 4096" \
         --sysctl "net.unix.max_dgram_qlen=4096" \
         --ulimit nofile=65535 \
