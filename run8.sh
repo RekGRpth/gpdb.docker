@@ -26,7 +26,6 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
         --mount type=bind,source="$GPDB/.local/$GP_MAJOR",destination=/usr/local \
         --mount type=bind,source="$GPDB/src/gpdb$GP_MAJOR",destination=/home/gpadmin/gpdb_src \
         --mount type=bind,source="$GPDB/src/gpdb$GP_MAJOR/src/test",destination=/home/gpadmin/gpdb_src/src/test \
-        --mount type=bind,source="/tmpfs/data/$GP_MAJOR",destination=/home/gpadmin/.data \
         --mount type=volume,source=gpdb,destination=/home/gpadmin \
         --name "gpdb$GP_MAJOR.$HOST" \
         --network name=docker \
