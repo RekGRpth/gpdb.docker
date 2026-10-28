@@ -37,6 +37,7 @@ RUN set -eux; \
         strace \
         sudo \
         valgrind \
+        python3-dateutil python3-psycopg2 python3-flake8 python3-etcd python3-click python3-prettytable python3-cdiff python3-pysyncobj \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
     localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \

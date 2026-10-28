@@ -20,6 +20,7 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
         --env USER_ID="$(id -u)" \
         --hostname "$HOST" \
         --init \
+        --ipc=host \
         --memory=16g \
         --mount type=bind,source="$GPDB/.ccache/$GP_MAJOR",destination=/home/gpadmin/.ccache \
         --mount type=bind,source="$GPDB/gpAdminLogs/$GP_MAJOR",destination=/home/gpadmin/gpAdminLogs \
