@@ -1,4 +1,4 @@
-FROM ghcr.io/greengagedb/greengage/ggdb7_ubuntu:latest
+FROM ghcr.io/greengagedb/greengage/ggdb7_ubuntu24.04:latest
 
 SHELL [ "/bin/bash", "-c" ]
 
@@ -8,8 +8,8 @@ RUN set -eux; \
     apt install -y \
         autoconf \
         ccache \
-        clang-format-11 \
-        clang-format-13 \
+#        clang-format-11 \
+#        clang-format-13 \
         elfutils \
         gdb \
         gh \
@@ -77,6 +77,8 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     source gpdb_src/concourse/scripts/common.bash; \
     install_gpdb; \
+    groupmod -g 1001 ubuntu; \
+    usermod -g 1001 -u 1001 ubuntu; \
     groupadd --system --gid 1000 "$GROUP"; \
     useradd --system --uid 1000 --home "$HOME" --shell /bin/bash --gid "$GROUP" "$USER"; \
     usermod -p '*' "$USER"; \
@@ -97,6 +99,7 @@ RUN set -eux; \
     setcap cap_perfmon,cap_sys_ptrace+ep "$PERF"; \
     ln -sf "$PERF" /usr/local/bin/perf; \
     mv /usr/local /usr/local.parent; \
+    ln -fs /usr/include/python3.12/cpython/longintrepr.h /usr/include/python3.12/; \
     echo done
 
 USER "$USER"
