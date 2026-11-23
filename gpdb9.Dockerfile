@@ -1,4 +1,4 @@
-FROM hub.adsw.io/library/gpdb7_u22:latest
+FROM ghcr.io/greengagedb/greengage/ggdb7_ubuntu24.04:latest
 
 SHELL [ "/bin/bash", "-c" ]
 
@@ -8,8 +8,8 @@ RUN set -eux; \
     apt install -y \
         autoconf \
         ccache \
-        clang-format-11 \
-        clang-format-13 \
+#        clang-format-11 \
+#        clang-format-13 \
         elfutils \
         gdb \
         gh \
@@ -17,12 +17,15 @@ RUN set -eux; \
         htop \
         jq \
         lcov \
+        libcap2-bin \
         liblz4-dev \
         libssh2-1-dev \
         libtool \
         libxml2-utils \
         libxslt-dev \
         libyaml-perl \
+        linux-tools-common \
+        linux-tools-generic \
         mc \
         meson \
         ninja-build \
@@ -30,7 +33,11 @@ RUN set -eux; \
         parallel \
         pcregrep \
         psmisc \
+        python3-transitions \
+        strace \
         sudo \
+        valgrind \
+        python3-dateutil python3-psycopg2 python3-flake8 python3-etcd python3-click python3-prettytable python3-cdiff python3-pysyncobj \
     ; \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8; \
     localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8; \
@@ -48,7 +55,7 @@ ENV CMAKE_C_COMPILER_LAUNCHER=ccache
 ENV CMAKE_CXX_COMPILER_LAUNCHER=ccache
 ENV CONFIGURE_FLAGS=
 ENV GOPATH="$PREFIX/go"
-ENV GPHOME="$PREFIX/greenplum-db-devel"
+ENV GPHOME="$PREFIX/gp"
 ENV GP_MAJOR=9
 ENV GROUP=gpadmin
 ENV HOME=/home/gpadmin
@@ -70,6 +77,8 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive; \
     source gpdb_src/concourse/scripts/common.bash; \
     install_gpdb; \
+    groupmod -g 1001 ubuntu; \
+    usermod -g 1001 -u 1001 ubuntu; \
     groupadd --system --gid 1000 "$GROUP"; \
     useradd --system --uid 1000 --home "$HOME" --shell /bin/bash --gid "$GROUP" "$USER"; \
     usermod -p '*' "$USER"; \
@@ -85,7 +94,12 @@ RUN set -eux; \
     echo '* soft nofile 65535' >>/etc/security/limits.conf; \
     sed -i "/^AcceptEnv/cAcceptEnv LANG LC_* GP* PG* PXF* SUSPEND_PG_REWIND" /etc/ssh/sshd_config; \
     sed -i "/^#MaxStartups/cMaxStartups 20:30:100" /etc/ssh/sshd_config; \
+    PERF="$(readlink -f "$(ls -1d /usr/lib/linux-tools/*/perf | sort -V | tail -1)")"; \
+    test -x "$PERF"; \
+    setcap cap_perfmon,cap_sys_ptrace+ep "$PERF"; \
+    ln -sf "$PERF" /usr/local/bin/perf; \
     mv /usr/local /usr/local.parent; \
+    ln -fs /usr/include/python3.12/cpython/longintrepr.h /usr/include/python3.12/; \
     echo done
 
 USER "$USER"

@@ -12,12 +12,13 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
     docker stop "gpdb$GP_MAJOR.$HOST" || echo $?
     docker rm "gpdb$GP_MAJOR.$HOST" || echo $?
     docker run \
+        --cap-add PERFMON \
+        --cap-add SYS_PTRACE \
         --detach \
         --env GROUP_ID="$(id -g)" \
         --env USER_ID="$(id -u)" \
         --hostname "$HOST" \
         --init \
-        --ipc=host \
         --memory=16g \
         --mount type=bind,source="$GPDB/.ccache/$GP_MAJOR",destination=/home/gpadmin/.ccache \
         --mount type=bind,source="$GPDB/gpAdminLogs/$GP_MAJOR",destination=/home/gpadmin/gpAdminLogs \
@@ -26,9 +27,11 @@ for HOST in cdw sdw1 sdw2 sdw3 sdw4 sdw5 sdw6; do
         --mount type=bind,source="$GPDB/src/gpdb$GP_MAJOR/src/test",destination=/home/gpadmin/gpdb_src/src/test \
         --mount type=volume,source=gpdb,destination=/home/gpadmin \
         --name "gpdb$GP_MAJOR.$HOST" \
-        --network "name=gpdb$GP_MAJOR" \
+        --network name=docker \
         --privileged \
         --restart always \
+        --security-opt seccomp=unconfined \
+        --shm-size=4gb \
         --sysctl "kernel.sem=500 1024000 200 4096" \
         --sysctl "net.unix.max_dgram_qlen=4096" \
         --ulimit nofile=65535 \
